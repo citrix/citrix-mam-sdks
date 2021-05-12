@@ -16,7 +16,7 @@ Before you download and utilize the Citrix MAM SDKs you **must**:
 
 ## Releases
 
-See the [Releases](https://github.com/citrix/citrix-mam-sdks) for download links of the different MAM SDKs, and details on each one.
+See the [Releases](https://github.com/citrix/citrix-mam-sdks/releases) for download links to the different MAM SDKs.
 
 The iOS SDK is also released in a Cocoapod-compatible manner, allowing customers to consume the iOS MAM SDKs in a way that works with a Cocoapod build system.
 

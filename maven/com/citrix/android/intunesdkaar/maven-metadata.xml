@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>com.citrix.android</groupId>
+  <artifactId>intunesdkaar</artifactId>
+  <versioning>
+    <release>6.0.0</release>
+    <versions>
+      <version>6.0.0</version>
+    </versions>
+    <lastUpdated>20201026130103</lastUpdated>
+  </versioning>
+</metadata>
