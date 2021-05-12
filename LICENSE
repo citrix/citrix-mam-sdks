@@ -1,18 +1,56 @@
 CITRIX LICENSE AGREEMENT
 
-This is a legal agreement ("AGREEMENT") between you, the Licensed User, and Citrix Systems, Inc., Citrix Systems International GmbH, Citrix Systems Asia Pacific Pty Ltd. and Citrix Systems Japan KK. Your location of receipt of this product (hereinafter "PRODUCT") or software maintenance (hereinafter "MAINTENANCE") determines the providing entity hereunder (the applicable entity is hereinafter referred to as "CITRIX"). Citrix Systems, Inc., a Delaware corporation, licenses this PRODUCT and provides MAINTENANCE in the Americas. Citrix Systems International GmbH, a Swiss company wholly owned by Citrix Systems, Inc., licenses this PRODUCT and provides MAINTENANCE in Europe, the Middle East, and Africa. Citrix Systems Asia Pacific Pty Ltd. licenses the PRODUCT and provides MAINTENANCE in Asia and the Pacific (excluding Japan). Citrix Systems Japan KK licenses the PRODUCT and provides MAINTENANCE in Japan. BY INSTALLING AND/OR USING THE PRODUCT, YOU ARE AGREEING TO BE BOUND BY THE TERMS OF THIS AGREEMENT. IF YOU DO NOT AGREE TO THE TERMS OF THIS AGREEMENT, DO NOT INSTALL AND/OR USE THE PRODUCT.
+This is a legal agreement ("AGREEMENT") between you, the Licensed User, and 
+Citrix Systems, Inc., Citrix Systems International GmbH, Citrix Systems Asia 
+Pacific Pty Ltd. and Citrix Systems Japan KK. Your location of receipt of this 
+product (hereinafter "PRODUCT") or software maintenance (hereinafter 
+"MAINTENANCE") determines the providing entity hereunder (the applicable 
+entity is hereinafter referred to as "CITRIX"). Citrix Systems, Inc., a 
+Delaware corporation, licenses this PRODUCT and provides MAINTENANCE in the 
+Americas. Citrix Systems International GmbH, a Swiss company wholly owned 
+by Citrix Systems, Inc., licenses this PRODUCT and provides MAINTENANCE in 
+Europe, the Middle East, and Africa. Citrix Systems Asia Pacific Pty Ltd. 
+licenses the PRODUCT and provides MAINTENANCE in Asia and the Pacific 
+(excluding Japan). Citrix Systems Japan KK licenses the PRODUCT and provides 
+MAINTENANCE in Japan. BY INSTALLING AND/OR USING THE PRODUCT, YOU ARE
+ AGREEING TO BE BOUND BY THE TERMS OF THIS AGREEMENT. IF YOU DO NOT AGREE TO 
+ THE TERMS OF THIS AGREEMENT, DO NOT INSTALL AND/OR USE THE PRODUCT.
 
-1. GRANT OF LICENSE. This PRODUCT contains software that provides mobility management services on a computer called a server ("Server Software") and contains software that allows mobile devices to access or utilize the services provided by the Server Software ("Client Software"). This PRODUCT is licensed under a user model ("User Model") or a device model ("Device Model"). The Server Software is activated by licenses that allow use of the Server Software in increments defined by the license model ("Licenses"). Under the User Model, a "User" is an individual authorized by you to use any mobile device(s) to access instances of the Server Software through your assignment of a single user ID, regardless of whether or not the individual is using the PRODUCT at any given time. Under the Device Model, a "Device" is a mobile device authorized by you to be used by any individual(s) to access instances of the Server Software (locally or over a network) through your assignment of the mobile device identity to a device log, regardless of whether or not the mobile device is being used at any given time. You may deploy network architectures that use hardware or software to reduce the number of Users or Devices that directly access the Server Software. This is referred to as multiplexing or pooling. This does not reduce the number of Licenses required to access or use the Server Software under either license model. A License is required for each User or Device that is connected to the multiplexing or pooling software or hardware front end. You must acquire and assign a License to each User or Device that accesses instances of the Server Software directly or indirectly, frequently or infrequently, even if the authorized User or Device is an automaton. Licenses for other CITRIX PRODUCTS or other editions of the same PRODUCT may not be used to increase the allowable use for the PRODUCT. Licenses are version specific for the PRODUCT. They must be the same version or later than the PRODUCT being accessed. CITRIX grants to you the following worldwide and non-exclusive rights to the PRODUCT and accompanying documentation (collectively called the "SOFTWARE"):
+1. GRANT OF LICENSE. This PRODUCT contains software that provides mobility 
+management services on a computer called a server ("Server Software") and 
+contains software that allows mobile devices to access or utilize the 
+services provided by the Server Software ("Client Software"). This PRODUCT 
+is licensed under a user model ("User Model") or a device model ("Device 
+Model"). The Server Software is activated by licenses that allow use of 
+the Server Software in increments defined by the license model ("Licenses"). 
+Under the User Model, a "User" is an individual authorized by you to use any 
+mobile device(s) to access instances of the Server Software through your assignment of a single user ID, regardless of whether or not the individual is using the PRODUCT at any given time. Under the Device Model, a "Device" is a mobile device authorized by you to be used by any individual(s) to access instances of the Server Software (locally or over a network) through your assignment of the mobile device identity to a device log, regardless of whether or not the mobile device is being used at any given time. You may deploy network architectures that use hardware or software to reduce the number of Users or Devices that directly access the Server Software. This is referred to as multiplexing or pooling. This does not reduce the number of Licenses required to access or use the Server Software under either license model. A License is required for each User or Device that is connected to the multiplexing or pooling software or hardware front end. You must acquire and assign a License to each User or Device that accesses instances of the Server Software directly or indirectly, frequently or infrequently, even if the authorized User or Device is an automaton. Licenses for other CITRIX PRODUCTS or other editions of the same PRODUCT may not be used to increase the allowable use for the PRODUCT. Licenses are version specific for the PRODUCT. They must be the same version or later than the PRODUCT being accessed. CITRIX grants to you the following worldwide and non-exclusive rights to the PRODUCT and accompanying documentation (collectively called the "SOFTWARE"):
 
-a. License. You may install the Server Software on an unlimited number of servers. You may use the Server Software to provide mobility management services for internal users or third parties up to the number of Licenses purchased. Each License that is installed in both a production and disaster recovery environment may be used only in one of the environments at any one time, except for duplicate use during routine testing of the disaster recovery environment.
+a. License. You may install the Server Software on an unlimited number of 
+servers. You may use the Server Software to provide mobility management 
+services for internal users or third parties up to the number of Licenses 
+purchased. Each License that is installed in both a production and disaster 
+recovery environment may be used only in one of the environments at any one 
+time, except for duplicate use during routine testing of the disaster recovery 
+environment.
 
-b. Perpetual License. If the SOFTWARE is "Perpetual License SOFTWARE," the SOFTWARE is licensed on a perpetual basis.
+b. Perpetual License. If the SOFTWARE is "Perpetual License SOFTWARE," the 
+SOFTWARE is licensed on a perpetual basis.
 
-c. Annual PRODUCT. If the SOFTWARE is "Annual License SOFTWARE," your license is for one (1) year. To extend an Annual License, you must purchase and install a new license prior to the expiration of the current License. Note that if a new License is not purchased and installed, Annual License SOFTWARE is not licensed for use beyond the expiration of the license period. Annual License SOFTWARE may disable itself upon expiration of the license period.
+c. Annual PRODUCT. If the SOFTWARE is "Annual License SOFTWARE," your 
+license is for one (1) year. To extend an Annual License, you must purchase 
+and install a new license prior to the expiration of the current License. Note 
+that if a new License is not purchased and installed, Annual License SOFTWARE 
+is not licensed for use beyond the expiration of the license period. Annual 
+License SOFTWARE may disable itself upon expiration of the license period.
 
-d. Partner Demo. If this SOFTWARE is labeled "Partner Demo," notwithstanding any term to the contrary in this AGREEMENT, your License permits use only if you are a current CITRIX authorized distributor or reseller and then only for demonstration, test, or evaluation purposes in support of your customers. Partner Demo SOFTWARE may not be used for customer training. Note that Partner Demo SOFTWARE disables
-
-itself on the "time-out" date identified on the SOFTWARE packaging.
+d. Partner Demo. If this SOFTWARE is labeled "Partner Demo," notwithstanding 
+any term to the contrary in this AGREEMENT, your License permits use only if 
+you are a current CITRIX authorized distributor or reseller and then only for 
+demonstration, test, or evaluation purposes in support of your customers. 
+Partner Demo SOFTWARE may not be used for customer training. Note that Partner 
+Demo SOFTWARE disables itself on the "time-out" date identified on the SOFTWARE
+packaging.
 
 e. Evaluation. If this SOFTWARE is labeled "Evaluation," notwithstanding any term to the contrary in this AGREEMENT, your License permits use only for your internal demonstration, test, or evaluation purposes for ninety (90) days with NO RIGHT TO MAINTENANCE, A WARRANTY OR INFRINGEMENT INDEMNIFICATION. Note that Evaluation SOFTWARE may disable itself upon License expiration.
 
