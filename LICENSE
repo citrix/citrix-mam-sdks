@@ -24,7 +24,28 @@ is licensed under a user model ("User Model") or a device model ("Device
 Model"). The Server Software is activated by licenses that allow use of 
 the Server Software in increments defined by the license model ("Licenses"). 
 Under the User Model, a "User" is an individual authorized by you to use any 
-mobile device(s) to access instances of the Server Software through your assignment of a single user ID, regardless of whether or not the individual is using the PRODUCT at any given time. Under the Device Model, a "Device" is a mobile device authorized by you to be used by any individual(s) to access instances of the Server Software (locally or over a network) through your assignment of the mobile device identity to a device log, regardless of whether or not the mobile device is being used at any given time. You may deploy network architectures that use hardware or software to reduce the number of Users or Devices that directly access the Server Software. This is referred to as multiplexing or pooling. This does not reduce the number of Licenses required to access or use the Server Software under either license model. A License is required for each User or Device that is connected to the multiplexing or pooling software or hardware front end. You must acquire and assign a License to each User or Device that accesses instances of the Server Software directly or indirectly, frequently or infrequently, even if the authorized User or Device is an automaton. Licenses for other CITRIX PRODUCTS or other editions of the same PRODUCT may not be used to increase the allowable use for the PRODUCT. Licenses are version specific for the PRODUCT. They must be the same version or later than the PRODUCT being accessed. CITRIX grants to you the following worldwide and non-exclusive rights to the PRODUCT and accompanying documentation (collectively called the "SOFTWARE"):
+mobile device(s) to access instances of the Server Software through your 
+assignment of a single user ID, regardless of whether or not the individual 
+is using the PRODUCT at any given time. Under the Device Model, a "Device" 
+is a mobile device authorized by you to be used by any individual(s) to 
+access instances of the Server Software (locally or over a network) through 
+your assignment of the mobile device identity to a device log, regardless 
+of whether or not the mobile device is being used at any given time. You 
+may deploy network architectures that use hardware or software to reduce the 
+number of Users or Devices that directly access the Server Software. This is 
+referred to as multiplexing or pooling. This does not reduce the number of 
+Licenses required to access or use the Server Software under either license 
+model. A License is required for each User or Device that is connected to 
+the multiplexing or pooling software or hardware front end. You must acquire 
+and assign a License to each User or Device that accesses instances of the 
+Server Software directly or indirectly, frequently or infrequently, even if 
+the authorized User or Device is an automaton. Licenses for other CITRIX 
+PRODUCTS or other editions of the same PRODUCT may not be used to increase 
+the allowable use for the PRODUCT. Licenses are version specific for the 
+PRODUCT. They must be the same version or later than the PRODUCT being 
+accessed. CITRIX grants to you the following worldwide and non-exclusive 
+rights to the PRODUCT and accompanying documentation (collectively called 
+the "SOFTWARE"):
 
 a. License. You may install the Server Software on an unlimited number of 
 servers. You may use the Server Software to provide mobility management 
