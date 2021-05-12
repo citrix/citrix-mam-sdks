@@ -10,7 +10,7 @@ For more information about the MAM SDK APIs, see the [developer documentation](h
 
 Before you download and utilize the Citrix MAM SDKs you **must**:
 
-* Review the [Citrix License Agreement](LICENSE). Print and keep a copy of this license for your records. By downloading and using the Citrix MAM SDKs you agree to these licensing terms.  If you do not accept them the terms then do not use the software.
+* Review the [Citrix License Agreement](https://developer.cloud.com/citrix-api-terms-of-use). Print and keep a copy of this license for your records. By downloading and using the Citrix MAM SDKs you agree to these licensing terms.  If you do not accept them the terms then do not use the software.
 
 * Review the [Export Agreement](EXPORT_CONTROLS). Print and keep a copy of this license for your records. If you cannot acknowledge it is your responsibility to comply with any and all export and import laws, and that Citrix Systems Inc has no further responsibility, then do not use the software.
 
