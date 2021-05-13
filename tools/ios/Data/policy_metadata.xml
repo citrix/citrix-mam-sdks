@@ -1,0 +1,1195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <PolicyMetadata xmlns="http://www.citrix.com/MobileAppPolicyMetadata"
+
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+ xsi:schemaLocation="http://www.citrix.com/MobileAppPolicies MobileAppPolicyMetadata.xsd">
+ -->
+<PolicyMetadata>
+
+    <VersionNumber>1.1</VersionNumber>
+
+    <!-- Flattened category hierachy -->
+    <Categories>
+        <Category>
+            <CategoryId>NetAccess</CategoryId>
+            <CategoryLabel res_id="LABEL_NETWORK_ACCESS">App Network Access</CategoryLabel>
+        </Category>
+        <Category>
+            <CategoryId>Diagnostics</CategoryId>
+            <CategoryLabel res_id="DIAGNOSTICS_CATEGORY">App Logs</CategoryLabel>
+        </Category>
+        <Category>
+            <CategoryId>Security_AppInteraction</CategoryId>
+            <CategoryLabel res_id="SECURITY_APPINTERACTION_CATEGORY">App Interaction</CategoryLabel>
+        </Category>
+        <Category>
+            <CategoryId>Security_AppInteraction_OutboundURL</CategoryId>
+            <CategoryLabel res_id="SECURITY_APPINTERACTION_OUTBOUNDURL_CATEGORY">App Interaction (Outbound URL)</CategoryLabel>
+        </Category>
+        <Category>
+            <CategoryId>Access_Auth</CategoryId>
+            <CategoryLabel res_id="STRING_AUTHENTICATION">Authentication</CategoryLabel>
+        </Category>
+        <Category>
+            <CategoryId>Compliance</CategoryId>
+            <CategoryLabel res_id="COMPLIANCE_CATEGORY">Compliance</CategoryLabel>
+        </Category>
+        <Category>
+            <CategoryId>Geofence</CategoryId>
+            <CategoryLabel res_id="GEOFENCE_CATEGORY">App Geofence</CategoryLabel>
+        </Category>
+        <Category>
+            <CategoryId>MailRedirection</CategoryId>
+            <CategoryLabel res_id="MAIL_REDIRECTION_STRING">Mail Redirection</CategoryLabel>
+        </Category>
+    </Categories>
+    
+    <Policies>
+        <Policy>
+            <PolicyName>MvpnNetworkAccess</PolicyName>
+            <PolicyType>enum</PolicyType>
+            <PolicyEnumValues>
+                <PolicyEnumValue>
+                    <PolicyEnumValueId>MvpnNetworkAccessUnrestricted</PolicyEnumValueId>
+                    <PolicyEnumValueString res_id="STRING_UNRESTRICTED">Unrestricted</PolicyEnumValueString>
+                </PolicyEnumValue>
+                <PolicyEnumValue>
+                    <PolicyEnumValueId>MvpnNetworkAccessBlocked</PolicyEnumValueId>
+                    <PolicyEnumValueString res_id="STRING_BLOCKED">Blocked</PolicyEnumValueString>
+                    <IntuneIgnore>true</IntuneIgnore>
+                </PolicyEnumValue>
+                <PolicyEnumValue>
+                    <PolicyEnumValueId>MvpnNetworkAccessTunneledWebSSO</PolicyEnumValueId>
+                    <PolicyEnumValueString res_id="NETWORK_ACCESS_TUNNELED_WEBSSO">Tunneled - Web SSO</PolicyEnumValueString>
+                </PolicyEnumValue>
+            </PolicyEnumValues>
+            <PolicyCategory>NetAccess</PolicyCategory>
+            <PolicyDefault>MvpnNetworkAccessUnrestricted</PolicyDefault>
+            <PolicyPriority>Normal</PolicyPriority>
+            <PolicyActiveFor>XenMobile,MDXMobileSDK,Intune</PolicyActiveFor>
+            <PolicyInactiveValue>MvpnNetworkAccessUnrestricted</PolicyInactiveValue>
+            <PolicyStrings>
+                <Title res_id="NETWORK_ACCESS_TITLE">Network access</Title>
+
+                <!-- <ShortDesc res_id="NETWORK_ACCESS_SHORTDESC">Block, permit, or redirect application network access</ShortDesc> -->
+
+                <Description res_id="MVPN_NETWORK_ACCESS_DESC">
+                    Prevents, permits or redirects app’s network access.
+
+                    If Unrestricted, no restrictions are placed on network access.
+                    If Blocked, all network access is blocked.
+                    If one of the Tunneled modes is selected, a per-app VPN tunnel in this initial mode is created back to the enterprise network and Citrix Gateway split tunnel settings are used.
+                    Citrix recommends Tunneled Full VPN for connections that employ client certificates or end-to-end SSL to a resource in the enterprise network and Tunneled Web SSO for connections that require single sign-on (SSO).
+                    Tunneled Full VPN and Web SSO permits switching between VPN modes automatically as needed. If a network request fails due to an authentication request which cannot be handled in a specific VPN mode, it is retried in an alternate mode. Tunneled Full VPN mode can accommodate server challenges for client certificates but not when using Tunneled Web SSO. Similarly, HTTP authentication challenges are more likely to be serviced with single sign-on when using Tunneled Web SSO mode.
+
+                    This policy replaces the previous Network Access, Preferred VPN Mode, and Permit VPN Mode Switching policies. You can still use your previous settings by selecting the Use Previous Settings option. The Use Previous Settings option is not available in Intune. Citrix strongly recommends you update this policy to one of the new values.
+                </Description>
+            </PolicyStrings>
+        </Policy>
+        
+        <Policy>
+            <PolicyName>MvpnExcludeDomains</PolicyName>
+            <PolicyType>string</PolicyType>
+            <PolicyCategory>NetAccess</PolicyCategory>
+            <PolicyDefault/>
+            <PolicyHidden>false</PolicyHidden>
+            <PolicyPriority>Normal</PolicyPriority>
+            <PolicyActiveFor>XenMobile,MDXMobileSDK,Intune</PolicyActiveFor>
+            <PolicyInactiveValue></PolicyInactiveValue>
+            <PolicyStrings>
+                <Title res_id="EXCLUSION_LIST_TITLE">Exclusion List</Title>
+                <Description res_id="EXCLUSION_LIST_DESC">
+                    Add a comma-separated list of fully qualified domain names (FQDN) or DNS suffixes to access directly instead of being tunneled through the Citrix Gateway. This policy only applies to Tunneled Web SSO mode when Citrix Gateway is configured in Split tunnel reverse mode.
+
+                    Default value is empty.
+                </Description>
+            </PolicyStrings>
+        </Policy>
+        
+        <Policy>
+            <PolicyName>AppPasscode</PolicyName>
+            <PolicyType>boolean</PolicyType>
+            <PolicyCategory>Access_Auth</PolicyCategory>
+            <PolicyDefault>true</PolicyDefault>
+            <PolicyStrings>
+                <Title res_id="APP_PASSCODE_TITLE">App passcode</Title>
+
+                <!-- <ShortDesc res_id="APP_PASSCODE_SHORTDESC">App Passcode</ShortDesc> -->
+
+                <BooleanTrueLabel res_id="LABEL_ON">On</BooleanTrueLabel>
+
+                <BooleanFalseLabel res_id="LABEL_OFF">Off</BooleanFalseLabel>
+
+                <Description res_id="APP_PASSCODE_DESC">
+                    If On, a PIN or passcode is required to unlock the app when it starts or resumes after a period of inactivity. Default value is On.
+
+                    To configure the inactivity timer for all apps, set the INACTIVITY_TIMER value in minutes in Client Properties on the Settings tab. The default inactivity timer value is 60 minutes. To disable the inactivity timer, so that a PIN or passcode prompt appears only when the app starts, set the value to zero.
+
+                    Note: If you select Secure offline for the Encryption keys policy, this policy is automatically enabled.
+                </Description>
+            </PolicyStrings>
+            <PolicyPriority>Normal</PolicyPriority>
+            <PolicyActiveFor>XenMobile,MDXMobileSDK</PolicyActiveFor>
+            <PolicyInactiveValue>false</PolicyInactiveValue>
+        </Policy>
+
+        <Policy>
+            <PolicyName>MaxOfflinePeriod</PolicyName>
+            <PolicyType>integer</PolicyType>
+            <PolicyCategory>Access_Auth</PolicyCategory>
+            <PolicyDefault>168</PolicyDefault>
+            <PolicyStrings>
+                <Title res_id="MAX_OFFLINE_PERIOD_TITLE">Maximum offline period (hours)</Title>
+                
+                <!-- <ShortDesc res_id="MAX_OFFLINE_PERIOD_SHORTDESC">Maximum period an application can run offline (hours)</ShortDesc> -->
+                
+                <Units res_id="UNITS_HOURS">hours</Units>
+                
+                <Description res_id="MAX_OFFLINE_PERIOD_DESC_IOS">
+                    Defines the maximum period an app can run without reconfirming app entitlement and refreshing policies from the XenMobile server. At expiration, logon to the server may be triggered if needed. Default value is 168 hours (7 days). Minimum period is 1 hour.
+                </Description>
+            </PolicyStrings>
+            <PolicyPriority>Normal</PolicyPriority>
+            <PolicyActiveFor>XenMobile</PolicyActiveFor>
+            <PolicyInactiveValue>2147483647</PolicyInactiveValue>
+        </Policy>
+        
+        <Policy>
+            <PolicyName>DefaultLoggerOutput</PolicyName>
+            <PolicyType>string</PolicyType>
+            <PolicyCategory>Diagnostics</PolicyCategory>
+            <PolicyDefault>file</PolicyDefault>
+            <PolicyStrings>
+                <Title res_id="DEFAULT_LOGGER_OUTPUT_TITLE">Default log output</Title>
+
+                <!-- <ShortDesc res_id="DEFAULT_LOGGER_OUTPUT_SHORTDESC">Default target of the Secure App diagnostic logging facility</ShortDesc> -->
+
+                <Description res_id="DEFAULT_LOGGER_OUTPUT_DESC_IOS">
+                    Determines which output mediums are used by Secure App diagnostic logging facilities by default. Possibilities values are file, console, or file,console.
+
+                    Default value is file.
+                </Description>
+            </PolicyStrings>
+            <PolicyPriority>Normal</PolicyPriority>
+            <PolicyActiveFor>XenMobile,MDXMobileSDK,Intune</PolicyActiveFor>
+            <PolicyInactiveValue>console</PolicyInactiveValue>
+        </Policy>
+
+        <Policy>
+            <PolicyName>DefaultLoggerLevel</PolicyName>
+            <PolicyType>integer</PolicyType>
+            <PolicyCategory>Diagnostics</PolicyCategory>
+            <PolicyDefault>4</PolicyDefault>
+            <PolicyStrings>
+                <Title res_id="DEFAULT_LOGGER_LEVEL_TITLE">Default log level</Title>
+
+                <!-- <ShortDesc res_id="DEFAULT_LOGGER_LEVEL_SHORTDESC">Default log verbosity level</ShortDesc> -->
+
+                <Units res_id="DEFAULT_LOGGER_LEVEL_UNITS">level</Units>
+
+                <Description res_id="DEFAULT_LOGGER_LEVEL_DESC_IOS">
+                    Controls default verbosity of Secure App diagnostic logging facility. Each level includes levels of lesser values. Range of possible levels includes:
+                    0  - Nothing logged
+                    1  - Critical errors
+                    2  - Errors
+                    3  - Warnings
+                    4  - Informational messages
+                    5  - Detailed informational messages
+                    6 through 15  - Debug levels 1 through 10
+
+
+                    Default value is level 4 (Informational messages).
+                </Description>
+            </PolicyStrings>
+            <PolicyPriority>Normal</PolicyPriority>
+            <PolicyActiveFor>XenMobile,MDXMobileSDK,Intune</PolicyActiveFor>
+            <PolicyInactiveValue>0</PolicyInactiveValue>
+        </Policy>
+
+        <Policy>
+            <PolicyName>MaxLogFiles</PolicyName>
+            <PolicyType>integer</PolicyType>
+            <PolicyCategory>Diagnostics</PolicyCategory>
+            <PolicyDefault>2</PolicyDefault>
+            <PolicyStrings>
+                <Title res_id="STRING_MAX_LOG_FILES">Max log files</Title>
+
+                <!-- <ShortDesc res_id="MAX_LOG_FILES_SHORTDESC">Maximum number of log files retained</ShortDesc> -->
+
+                <Units res_id="MAX_LOG_FILES_UNITS">files</Units>
+
+                <Description res_id="MAX_LOG_FILES_DESC">
+                    Limits the number of log files retained by the Secure App diagnostic logging facility before rolling over. Minimum is 2. Maximum is 8.
+
+                    Default value is 2.
+                </Description>
+            </PolicyStrings>
+            <PolicyPriority>Normal</PolicyPriority>
+            <PolicyActiveFor>XenMobile,MDXMobileSDK,Intune</PolicyActiveFor>
+            <PolicyInactiveValue>0</PolicyInactiveValue>
+        </Policy>
+
+        <Policy>
+            <PolicyName>MaxLogFileSize</PolicyName>
+            <PolicyType>integer</PolicyType>
+            <PolicyCategory>Diagnostics</PolicyCategory>
+            <PolicyDefault>2</PolicyDefault>
+            <PolicyStrings>
+                <Title res_id="STRING_MAX_LOG_FILE_SIZE">Max log file size</Title>
+
+                <!-- <ShortDesc res_id="MAX_LOG_FILE_SIZE_SHORTDESC">Maximum log file size before rolling over</ShortDesc> -->
+
+                <Units res_id="MAX_LOG_FILE_SIZE_UNITS">Mbytes</Units>
+
+                <Description res_id="MAX_LOG_FILE_SIZE_DESC">
+                    Limits the size in megabytes (MB) of the log files retained by the Secure App diagnostic logging facility before rolling over. Minimum is 1 MB. Maximum is 5 MB.
+
+                    Default value is 2 MB.
+                </Description>
+            </PolicyStrings>
+            <PolicyPriority>Normal</PolicyPriority>
+            <PolicyActiveFor>XenMobile,MDXMobileSDK,Intune</PolicyActiveFor>
+            <PolicyInactiveValue>0</PolicyInactiveValue>
+        </Policy>
+
+        <Policy>
+            <PolicyName>ObfuscateLogs</PolicyName>
+            <PolicyType>boolean</PolicyType>
+            <PolicyCategory>Diagnostics</PolicyCategory>
+            <PolicyDefault>true</PolicyDefault>
+            
+            <PolicyStrings>
+                <Title res_id="OBFUSCATE_LOGS_TITLE">Obscure the URLs in logs</Title>
+                
+                <BooleanTrueLabel res_id="LABEL_ON">On</BooleanTrueLabel>
+                
+                <BooleanFalseLabel res_id="LABEL_OFF">Off</BooleanFalseLabel>
+                
+                <Description res_id="OBFUSCATE_LOGS_DESC">
+                    Renders URLs in app logs unreadable. If Off, app logs show the full URL. Default is On.
+                </Description>
+            </PolicyStrings>
+            <PolicyPriority>Normal</PolicyPriority>
+            <PolicyActiveFor>XenMobile,MDXMobileSDK,Intune</PolicyActiveFor>
+            <PolicyInactiveValue>true</PolicyInactiveValue>
+        </Policy>
+        
+        <Policy>
+            <PolicyName>BlockLogs</PolicyName>
+            <PolicyType>boolean</PolicyType>
+            <PolicyCategory>Diagnostics</PolicyCategory>
+            <PolicyDefault>false</PolicyDefault>
+            
+            <PolicyStrings>
+                <Title res_id="BLOCK_LOGS_TITLE">Block app logs</Title>
+                
+                <!-- <ShortDesc res_id="BLOCK_LOGS_SHORTDESC">Block or allow application to use Secure App diagnostic logs</ShortDesc>  -->
+                
+                <BooleanTrueLabel res_id="LABEL_ON">On</BooleanTrueLabel>
+                
+                <BooleanFalseLabel res_id="LABEL_OFF">Off</BooleanFalseLabel>
+                
+                <Description res_id="BLOCK_LOGS_DESC">
+                    If On, prohibits an app from using the Secure App diagnostic logging facility. If Off, app logs are recorded and may be collected using the Secure Hub email support feature.
+                    
+                    Default value is Off.
+                </Description>
+            </PolicyStrings>
+            <PolicyPriority>Normal</PolicyPriority>
+            <PolicyActiveFor>XenMobile,MDXMobileSDK,Intune</PolicyActiveFor>
+            <PolicyInactiveValue>false</PolicyInactiveValue>
+        </Policy>
+        
+        
+        <!-- App Interaction Policies -->
+
+        <Policy>
+            <PolicyName>CutAndCopy</PolicyName>
+            <PolicyType>enum</PolicyType>
+
+            <PolicyEnumValues>
+                <PolicyEnumValue>
+                    <PolicyEnumValueId>Unrestricted</PolicyEnumValueId>
+                    <PolicyEnumValueString res_id="STRING_UNRESTRICTED">Unrestricted</PolicyEnumValueString>
+                </PolicyEnumValue>
+                <PolicyEnumValue>
+                    <PolicyEnumValueId>Blocked</PolicyEnumValueId>
+                    <PolicyEnumValueString res_id="STRING_BLOCKED">Blocked</PolicyEnumValueString>
+                </PolicyEnumValue>
+                <PolicyEnumValue>
+                    <PolicyEnumValueId>SecurityGroup</PolicyEnumValueId>
+                    <PolicyEnumValueString res_id="STRING_RESTRICTED">Restricted</PolicyEnumValueString>
+                </PolicyEnumValue>
+            </PolicyEnumValues>
+
+            <PolicyCategory>Security_AppInteraction</PolicyCategory>
+            <PolicyDefault>SecurityGroup</PolicyDefault>
+            <PolicyStrings>
+                <Title res_id="COPY_TITLE">Cut and copy</Title>
+
+                <!-- <ShortDesc res_id="COPY_SHORTDESC">Restrict clipboard cut and copy operations</ShortDesc> -->
+
+                <Description res_id="COPY_DESC_RESTRICTED">
+                    Blocks, permits, or restricts clipboard cut and copy operations for this app. If Restricted, the copied Clipboard data is placed in a private Clipboard that is only available to MDX apps.
+
+                    Default value is Restricted.
+                </Description>
+            </PolicyStrings>
+            <PolicyPriority>Normal</PolicyPriority>
+            <PolicyActiveFor>XenMobile,MDXMobileSDK</PolicyActiveFor>
+            <PolicyInactiveValue>Unrestricted</PolicyInactiveValue>
+        </Policy>
+
+        <Policy>
+            <PolicyName>Paste</PolicyName>
+            <PolicyType>enum</PolicyType>
+
+            <PolicyEnumValues>
+                <PolicyEnumValue>
+                    <PolicyEnumValueId>Unrestricted</PolicyEnumValueId>
+                    <PolicyEnumValueString res_id="STRING_UNRESTRICTED">Unrestricted</PolicyEnumValueString>
+                </PolicyEnumValue>
+                <PolicyEnumValue>
+                    <PolicyEnumValueId>Blocked</PolicyEnumValueId>
+                    <PolicyEnumValueString res_id="STRING_BLOCKED">Blocked</PolicyEnumValueString>
+                </PolicyEnumValue>
+                <PolicyEnumValue>
+                    <PolicyEnumValueId>SecurityGroup</PolicyEnumValueId>
+                    <PolicyEnumValueString res_id="STRING_RESTRICTED">Restricted</PolicyEnumValueString>
+                </PolicyEnumValue>
+            </PolicyEnumValues>
+
+            <PolicyCategory>Security_AppInteraction</PolicyCategory>
+            <PolicyDefault>Unrestricted</PolicyDefault>
+            <PolicyStrings>
+                <Title res_id="PASTE_TITLE">Paste</Title>
+
+                <!-- <ShortDesc res_id="PASTE_SHORTDESC">Restrict clipboard paste operations</ShortDesc> -->
+
+                <Description res_id="PASTE_DESC">
+                    Blocks, permits, or restricts Clipboard paste operations for this app. When Restricted is selected, the pasted Clipboard data is sourced from a private Clipboard that is only available to MDX apps.
+
+                    Default value is Unrestricted.
+                </Description>
+            </PolicyStrings>
+            <PolicyPriority>Normal</PolicyPriority>
+            <PolicyActiveFor>XenMobile,MDXMobileSDK</PolicyActiveFor>
+            <PolicyInactiveValue>Unrestricted</PolicyInactiveValue>
+        </Policy>
+
+        <Policy>
+            <PolicyName>DocumentExchange</PolicyName>
+            <PolicyType>enum</PolicyType>
+
+            <PolicyEnumValues>
+                <PolicyEnumValue>
+                    <PolicyEnumValueId>Unrestricted</PolicyEnumValueId>
+                    <PolicyEnumValueString res_id="STRING_UNRESTRICTED">Unrestricted</PolicyEnumValueString>
+                </PolicyEnumValue>
+                <PolicyEnumValue>
+                    <PolicyEnumValueId>Blocked</PolicyEnumValueId>
+                    <PolicyEnumValueString res_id="STRING_BLOCKED">Blocked</PolicyEnumValueString>
+                </PolicyEnumValue>
+                <PolicyEnumValue>
+                    <PolicyEnumValueId>SecurityGroup</PolicyEnumValueId>
+                    <PolicyEnumValueString res_id="STRING_RESTRICTED">Restricted</PolicyEnumValueString>
+                </PolicyEnumValue>
+            </PolicyEnumValues>
+
+            <PolicyCategory>Security_AppInteraction</PolicyCategory>
+            <PolicyDefault>SecurityGroup</PolicyDefault>
+            <PolicyStrings>
+                <Title res_id="DOCEX_TITLE">Document exchange (Open In)</Title>
+
+                <!-- <ShortDesc res_id="DOCEX_SHORTDESC">Restrict document exchange with other applications</ShortDesc> -->
+
+                <Description res_id="DOCEX_DESC_RESTRICTED">
+                    Blocks, permits, or restricts document exchange operations for this app. If Restricted, documents can be exchanged only with other MDX apps.
+
+                    If Unrestricted, set the Enable encryption policy to On so that users can open documents in unwrapped apps. If the receiving app is unwrapped or has encryption disabled, MDX decrypts the document.
+
+                    Default value is Restricted.
+                </Description>
+            </PolicyStrings>
+            <PolicyPriority>Normal</PolicyPriority>
+            <PolicyActiveFor>XenMobile,MDXMobileSDK</PolicyActiveFor>
+            <PolicyInactiveValue>Unrestricted</PolicyInactiveValue>
+        </Policy>
+
+        <Policy>
+            <PolicyName>DocumentExchangeExceptionList</PolicyName>
+            <PolicyType>string</PolicyType>
+            <PolicyCategory>Security_AppInteraction</PolicyCategory>
+            <PolicyDefault>com.microsoft.Office.Word,com.microsoft.Office.Excel,com.microsoft.Office.Powerpoint,com.microsoft.onenote,com.microsoft.onenoteiPad,com.microsoft.Office.Outlook</PolicyDefault>
+            <PolicyStrings>
+                <Title res_id="DOCEX_EXCEPTION_LIST_TITLE">Restricted Open-In exception list</Title>
+
+                <!-- <ShortDesc res_id="DOCEX_EXCEPTION_LIST_SHORTDESC">Exception list when document exchange is set to restricted.</ShortDesc> -->
+
+                <Description res_id="DOCEX_EXCEPTION_LIST_DESC_IOS">
+                    When the Document exchange (Open In) policy is Restricted, an MDX app can share documents with this comma-delimited list of unmanaged app IDs, even if the Document exchange (Open In) policy is Restricted and the Enable encryption policy is On. The default exception list allows Office 365 apps:
+
+                    com.microsoft.Office.Word,com.microsoft.Office.Excel,com.microsoft.Office.Powerpoint,com.microsoft.onenote,com.microsoft.onenoteiPad,com.microsoft.Office.Outlook
+
+                    Only Office 365 apps are supported for this policy.
+
+                    Caution: Be sure to consider the security implications of this policy. The exception list allows content to travel between unmanaged apps and the secure MDX environment.
+                </Description>
+            </PolicyStrings>
+            <PolicyPriority>Normal</PolicyPriority>
+            <PolicyActiveFor>XenMobile,MDXMobileSDK</PolicyActiveFor>
+            <PolicyInactiveValue/>
+        </Policy>
+
+        <Policy>
+            <PolicyName>InboundDocumentExchange</PolicyName>
+            <PolicyType>enum</PolicyType>
+
+            <PolicyEnumValues>
+                <PolicyEnumValue>
+                    <PolicyEnumValueId>Unrestricted</PolicyEnumValueId>
+                    <PolicyEnumValueString res_id="STRING_UNRESTRICTED">Unrestricted</PolicyEnumValueString>
+                </PolicyEnumValue>
+                <PolicyEnumValue>
+                    <PolicyEnumValueId>Blocked</PolicyEnumValueId>
+                    <PolicyEnumValueString res_id="STRING_BLOCKED">Blocked</PolicyEnumValueString>
+                </PolicyEnumValue>
+                <PolicyEnumValue>
+                    <PolicyEnumValueId>SecurityGroup</PolicyEnumValueId>
+                    <PolicyEnumValueString res_id="STRING_RESTRICTED">Restricted</PolicyEnumValueString>
+                </PolicyEnumValue>
+            </PolicyEnumValues>
+
+            <PolicyCategory>Security_AppInteraction</PolicyCategory>
+            <PolicyDefault>Unrestricted</PolicyDefault>
+            <PolicyStrings>
+                <Title res_id="INBOUND_DOCEX_TITLE">Inbound document exchange (Open In)</Title>
+
+                <!-- <ShortDesc res_id="DOCEX_SHORTDESC">Restrict document exchange with other applications</ShortDesc> -->
+
+                <Description res_id="INBOUND_DOCEX_DESC">
+                    Blocks, restricts or allows inbound document exchange operations for this app. If Restricted, documents can be exchanged only with other MDX apps. Default value is Unrestricted.
+
+                    If Blocked or Restricted, you can use the Inbound document exchange whitelist policy to specify apps that can send documents to this app.
+
+                    Options: Unrestricted, Blocked, or Restricted
+                </Description>
+            </PolicyStrings>
+            <PolicyPriority>Normal</PolicyPriority>
+            <PolicyActiveFor>XenMobile,MDXMobileSDK</PolicyActiveFor>
+            <PolicyInactiveValue>Unrestricted</PolicyInactiveValue>
+        </Policy>
+
+        <Policy>
+            <PolicyName>InboundDocumentExchangeWhitelist</PolicyName>
+            <PolicyHidden>true</PolicyHidden>
+            <PolicyType>string</PolicyType>
+            <PolicyCategory>Security_AppInteraction</PolicyCategory>
+            <PolicyDefault/>
+            <PolicyStrings>
+                <Title res_id="INBOUND_DOCEX_WHITELIST_TITLE">Inbound document exchange whitelist</Title>
+
+                <!-- <ShortDesc res_id="DOCEX_SHORTDESC">Restrict document exchange with other applications</ShortDesc> -->
+
+                <Description res_id="INBOUND_DOCEX_WHITELIST_DESC">
+                    When inbound document exchange is restricted or blocked, this comma-delimited list of app IDs, including non-MDX apps, will be allowed to send documents to the app.
+                </Description>
+            </PolicyStrings>
+            <PolicyPriority>Normal</PolicyPriority>
+            <PolicyActiveFor>XenMobile,MDXMobileSDK</PolicyActiveFor>
+            <PolicyInactiveValue/>
+        </Policy>
+
+        <Policy>
+            <PolicyName>InboundURLFilter</PolicyName>
+            <PolicyType>string</PolicyType>
+            <PolicyCategory>Security_AppInteraction</PolicyCategory>
+            <PolicyDefault/>
+            <PolicyStrings>
+                <Title res_id="INBOUND_URLS_TITLE">App URL schemes</Title>
+
+                <!-- <ShortDesc res_id="INBOUND_URLS_SHORTDESC">Allowed/blocked URL schemes handled by the app</ShortDesc> -->
+
+                <Description res_id="INBOUND_URLS_DESC_WITH_DEFAULT">
+                    iOS apps can dispatch URL requests to other apps that have been registered to handle specific schemes (such as "http://"). This facility provides a mechanism for an app to pass requests for help to another app.
+
+                    This policy serves to filter the schemes that are actually passed into this app for handling (that is, inbound URLs). Default value is empty, meaning that all registered app URL schemes are blocked.
+
+                    The policy should be formatted as a comma-separated list of patterns in which each pattern may be preceded by a plus "+" or minus "-".  Inbound URLs are compared against the patterns in the order listed until a match is found. Once matched, the action taken is dictated by the prefix.  A minus "-" prefix blocks the URL from being passed into this app.  A plus "+" prefix permits the URL to be passed into the app for handling.  If neither "+" or "-" is provided with the pattern, "+" (allow) is assumed. If an inbound URL does not match any pattern in the list, the URL is blocked.
+
+                    Default: All registered app URL schemes are blocked.
+                </Description>
+            </PolicyStrings>
+            <PolicyPriority>Normal</PolicyPriority>
+            <PolicyActiveFor>XenMobile,MDXMobileSDK,Intune</PolicyActiveFor>
+            <PolicyInactiveValue/>
+        </Policy>
+
+        <Policy>
+            <PolicyName>OutboundURLFilter</PolicyName>
+            <PolicyType>string</PolicyType>
+            <PolicyCategory>Security_AppInteraction_OutboundURL</PolicyCategory>
+            <PolicyDefault>+maps.apple.com,+itunes.apple.com,^http:=ctxmobilebrowser:,^https:=ctxmobilebrowsers:,^mailto:=ctxmail:,+^citrixreceiver:,+^telprompt:,+^tel:,+^col-g2m-2:,+^col-g2w-2:,+^maps:ios_addr,+^mapitem:</PolicyDefault>
+            <PolicyStrings>
+                <Title res_id="OUTBOUND_URLS_TITLE">Allowed URLs</Title>
+
+                <!-- <ShortDesc res_id="OUTBOUND_URLS_SHORTDESC">URL patterns permitted for dispatch to other apps</ShortDesc> -->
+
+                <Description res_id="OUTBOUND_URLS_DESC_IOS_DEFAULT">
+                    iOS apps can dispatch URL requests to other apps that have been registered to handle specific schemes (such as "http://"). This facility provides a mechanism for an app to pass requests for help to another app.
+
+                    This policy serves to filter the URLs that are passed from this app to other apps for handling (that is, outbound URLs).
+
+                    The policy should be formatted as a comma-separated list of patterns in which each pattern may be preceded by a plus "+" or minus "-".  Outbound URLs are compared against the patterns in the order listed until a match is found. Once matched, the action taken is dictated by the prefix.  A minus "-" prefix blocks the URL from being passed out to another app.  A plus "+" prefix permits the URL to be passed out to another app for handling.  If neither "+" or "-" is provided with the pattern, "+" (allow) is assumed.  A pair of values separated by "=" indicates a substitution where occurrences of the first string are replaced with the second.  You can use the regular-expression "^" prefix to search string to anchor it to the beginning of the URL. If an outbound URL does not match any pattern in the list, it will be blocked.
+
+                    Default:
+                    +maps.apple.com
+                    +itunes.apple.com
+                    ^http:=ctxmobilebrowser:
+                    ^https:=ctxmobilebrowsers:
+                    ^mailto:=ctxmail:
+                    +^citrixreceiver:
+                    +^telprompt:
+                    +^tel:
+                    +^col-g2m-2:
+                    +^col-g2w-2:
+                    +^maps:ios_addr
+                    +^mapitem:
+                </Description>
+            </PolicyStrings>
+            <PolicyPriority>Normal</PolicyPriority>
+            <PolicyActiveFor>XenMobile,MDXMobileSDK,Intune</PolicyActiveFor>
+            <PolicyInactiveValue/>
+        </Policy>
+
+        <Policy>
+            <PolicyName>DevicePasscode</PolicyName>
+            <PolicyType>boolean</PolicyType>
+            <PolicyCategory>Compliance</PolicyCategory>
+            <PolicyDefault>true</PolicyDefault>
+            <PolicyStrings>
+                <Title res_id="DEVICE_PASSCODE_TITLE">Device passcode</Title>
+                
+                <!-- <ShortDesc res_id="DEVICE_PASSCODE_SHORTDESC">Device passcode</ShortDesc> -->
+                
+                <BooleanTrueLabel res_id="LABEL_ON">On</BooleanTrueLabel>
+                <BooleanFalseLabel res_id="LABEL_OFF">Off</BooleanFalseLabel>
+                
+                <Description res_id="DEVICE_PASSCODE_DESC">
+                    Note: This policy applies to iOS 9 devices.
+                    
+                    If On, a PIN or passcode is required to unlock the device when it starts or resumes after a period of inactivity. A device passcode is required to encrypt app data using Apple file encryption. Data for all apps on the device will be encrypted.
+                    
+                    Default value is Off.
+                </Description>
+            </PolicyStrings>
+            <PolicyPriority>Normal</PolicyPriority>
+            <PolicyActiveFor>XenMobile</PolicyActiveFor>
+            <PolicyInactiveValue>false</PolicyInactiveValue>
+        </Policy>
+
+        <Policy>
+            <PolicyName>BlockJailbrokenDevices</PolicyName>
+            <PolicyType>boolean</PolicyType>
+            <PolicyCategory>Compliance</PolicyCategory>
+            <PolicyDefault>true</PolicyDefault>
+            <PolicyStrings>
+                <Title res_id="BLOCK_JAILBROKEN_TITLE">Block jailbroken or rooted</Title>
+                
+                <BooleanTrueLabel res_id="LABEL_ON">On</BooleanTrueLabel>
+                <BooleanFalseLabel res_id="LABEL_OFF">Off</BooleanFalseLabel>
+                
+                <!-- <ShortDesc res_id="BLOCK_JAILBROKEN_SHORTDESC">App requires a device that is not jailbroken or rooted</ShortDesc> -->
+                
+                <Description res_id="BLOCK_JAILBROKEN_DESC">
+                    If On, the app is locked when the device is jailbroken or rooted. If Off, the app can run even if the device is jailbroken or rooted.
+                    
+                    Default value is On.
+                </Description>
+            </PolicyStrings>
+            <PolicyPriority>Normal</PolicyPriority>
+            <PolicyActiveFor>XenMobile</PolicyActiveFor>
+            <PolicyInactiveValue>false</PolicyInactiveValue>
+        </Policy>
+        
+        <Policy>
+            <PolicyName>EDPAppComplianceEnum</PolicyName>
+            <PolicyType>enum</PolicyType>
+            <PolicyEnumValues>
+                <PolicyEnumValue>
+                    <PolicyEnumValueId>Block</PolicyEnumValueId>
+                    <PolicyEnumValueString res_id="STRING_BLOCK_APP">Block app</PolicyEnumValueString>
+                </PolicyEnumValue>
+                <PolicyEnumValue>
+                    <PolicyEnumValueId>Warn</PolicyEnumValueId>
+                    <PolicyEnumValueString res_id="STRING_WARN">Allow app after warning</PolicyEnumValueString>
+                </PolicyEnumValue>
+                <PolicyEnumValue>
+                    <PolicyEnumValueId>Allow</PolicyEnumValueId>
+                    <PolicyEnumValueString res_id="STRING_ALLOW_APP">Allow app</PolicyEnumValueString>
+                </PolicyEnumValue>
+            </PolicyEnumValues>
+            <PolicyCategory>Compliance</PolicyCategory>
+            <PolicyDefault>Warn</PolicyDefault>
+            <PolicyStrings>
+                <Title res_id="STRING_EDP_APP_NON_COMPLIANCE_ENUM">Non-compliant device behavior</Title>
+                
+                <!-- <ShortDesc res_id="STRING_EDPAPPCOMPLIANCENUM_SHORTDESC">EDP App Compliance</ShortDesc> -->
+                
+                <Description res_id="STRING_EDPAPPCOMPLIANCENUM_DESC">
+                    
+                    Allows you to take an action when the device falls below the minimum compliance requirements of encryption. Default value is Allow app after warning. Allows you to choose an action when a device does not adhere to the minimum compliance requirements of encryption Select Allow app for the app to run normally. Select Allow app after warning for the app to run after the warning appears. Select Block to block the app from running. Default value is Allow app after warning.
+                    
+                </Description>
+            </PolicyStrings>
+            <PolicyPriority>Normal</PolicyPriority>
+            <PolicyActiveFor>XenMobile</PolicyActiveFor>
+        </Policy>
+        
+        <Policy>
+            <PolicyName>EDPAppComplianceCriteria</PolicyName>
+            <PolicyHidden>true</PolicyHidden>
+            <PolicyType>string</PolicyType>
+            <PolicyCategory>Compliance</PolicyCategory>
+            <PolicyDefault>iOS10.2+;DebuggerAccess;DataSharing;JailbrokenDevice;DevicePasscode;ObfuscateLogs</PolicyDefault>
+            <PolicyStrings>
+                <Title res_id="EDP_APP_COMPLIANCE_CRITERIA_TITLE">Criteria for compliant device behavior</Title>
+                <!-- <ShortDesc res_id="STRING_EDPAPPCOMPLIANCECRITERIA_SHORTDESC">Determines whether the device adheres to the minimum compliance requirements of encryption.</ShortDesc> -->
+                <Description res_id="STRING_EDPAPPCOMPLIANCECRITERIA_DESC">
+                    
+                    Set of requirements that allow you to decide whether a device adheres to the minimum compliance requirements of encryption, based on which the compliance technology determines the execution environment.The following criteria determine whether a device meets the minimum compliance requirements:
+                    
+                    * iOS 10.2+: App is running operation system version that is greater than or equal to the specified version.
+                    * Debugger access: App is not being debugged or traced
+                    * Data sharing: Data sharing is not enabled on the app
+                    * Jailbroken device: App is not running on a jailbroken device
+                    * Device passcode: Device passcode is ON
+                    
+                </Description>
+            </PolicyStrings>
+        </Policy>
+        
+        <Policy>
+            <PolicyName>WipeDataOnAppLock</PolicyName>
+            <PolicyType>boolean</PolicyType>
+            <PolicyCategory>Compliance</PolicyCategory>
+            <PolicyDefault>false</PolicyDefault>
+            <PolicyStrings>
+                <Title res_id="WIPE_DATA_ON_APP_LOCK_TITLE">Erase app data on lock</Title>
+                
+                <!-- <ShortDesc res_id="WIPE_DATA_ON_APP_LOCK_SHORTDESC">Erase application data when app becomes locked</ShortDesc> -->
+                
+                <Description res_id="WIPE_DATA_ON_APP_LOCK_DESC">
+                    Erases app data and resets the app when the app is locked. If Off, app data is not erased when the app is locked.
+                    
+                    An app can be locked for any of the following reasons: loss of app entitlement for the user, app subscription removed, account removed, Secure Hub uninstalled, too many app authentication failures, jailbroken or rooted device detected (per policy setting), device placed in lock state by administrative action.
+                    
+                    Default value is Off.
+                </Description>
+            </PolicyStrings>
+            <PolicyPriority>Normal</PolicyPriority>
+            <PolicyActiveFor>XenMobile</PolicyActiveFor>
+            <PolicyInactiveValue>false</PolicyInactiveValue>
+        </Policy>
+        
+        <Policy>
+            <PolicyName>ActivePollPeriod</PolicyName>
+            <PolicyType>integer</PolicyType>
+            <PolicyCategory>Compliance</PolicyCategory>
+            <PolicyDefault>60</PolicyDefault>
+            <PolicyStrings>
+                <Title res_id="ACTIVE_POLL_PERIOD_TITLE">Active poll period (minutes)</Title>
+                
+                <!-- <ShortDesc res_id="ACTIVE_POLL_PERIOD_SHORTDESC">Period (minutes) between active polls of XenMobile</ShortDesc> -->
+                
+                <Units res_id="UNITS_MINUTES">minutes</Units>
+                
+                <Description res_id="ACTIVE_POLL_PERIOD_DESC">
+                    When an app starts, the MDX framework polls Citrix Endpoint Management to determine current app and device status. Assuming the server is reachable, the framework returns information about the lock/erase status of the device and the enable/disable status of the app. Whether the server can be reached or not, a subsequent poll is scheduled based on the active poll period interval. After the period expires, a new poll is again attempted.
+                    
+                    Default value is 60 minutes (1 hour).
+                    
+                    Important: Only set this value lower for high-risk apps or performance may be affected.
+                </Description>
+            </PolicyStrings>
+            <PolicyPriority>Normal</PolicyPriority>
+            <PolicyActiveFor>XenMobile</PolicyActiveFor>
+            <PolicyInactiveValue>2147483647</PolicyInactiveValue>
+        </Policy>
+        
+        <Policy>
+            <PolicyName>UpgradeGracePeriod</PolicyName>
+            <PolicyType>integer</PolicyType>
+            <PolicyCategory>Compliance</PolicyCategory>
+            <PolicyDefault>168</PolicyDefault>
+            <PolicyStrings>
+                <Title res_id="UPGRADE_GRACE_PERIOD_TITLE">App update grace period (hours)</Title>
+                
+                <!-- <ShortDesc res_id="UPGRADE_GRACE_PERIOD_SHORTDESC">Grace period (hours) before an available application update must be applied</ShortDesc> -->
+                
+                <Units res_id="UNITS_HOURS">hours</Units>
+                
+                <Description res_id="UPGRADE_GRACE_PERIOD_DESC">
+                    Defines the grace period that an app can continue to be used after the system detects an app update. We do not recommend using a value of zero. A zero value prevents a running app from being used until users download and install an update. The user gets no warning and is forced to exit the app, potentially losing work.
+                    Default value is 168 hours (7 days).
+                </Description>
+            </PolicyStrings>
+            <PolicyPriority>Normal</PolicyPriority>
+            <PolicyActiveFor>XenMobile</PolicyActiveFor>
+            <PolicyInactiveValue>2147483647</PolicyInactiveValue>
+        </Policy>
+        
+        <!-- End App Interaction -->
+
+        <!-- App Restriction Policies -->
+    <Policy>
+      <PolicyName>DisableCamera</PolicyName>
+      <PolicyType>boolean</PolicyType>
+      <PolicyCategory>Security_AppRestrictions</PolicyCategory>
+      <PolicyDefault>true</PolicyDefault>
+      <PolicyStrings>
+        <Title res_id="DISABLE_CAMERA_TITLE">Block camera</Title>
+
+        <!-- <ShortDesc res_id="DISABLE_CAMERA_SHORTDESC">Block or allow application access to camera</ShortDesc> -->
+
+        <BooleanTrueLabel res_id="LABEL_ON">On</BooleanTrueLabel>
+
+        <BooleanFalseLabel res_id="LABEL_OFF">Off</BooleanFalseLabel>
+
+        <Description res_id="DISABLE_CAMERA_DESC">
+If On, prevents an app from directly using the camera hardware.
+
+Default value is On.
+</Description>
+      </PolicyStrings>
+    <PolicyPriority>Normal</PolicyPriority>
+<PolicyActiveFor>XenMobile,MDXMobileSDK,Intune</PolicyActiveFor>
+<PolicyInactiveValue>false</PolicyInactiveValue>
+</Policy>
+
+    <Policy>
+        <PolicyName>DisablePhotoLibrary</PolicyName>
+        <PolicyType>boolean</PolicyType>
+        <PolicyCategory>Security_AppRestrictions</PolicyCategory>
+        <PolicyDefault>true</PolicyDefault>
+        <PolicyStrings>
+            <Title res_id="DISABLE_PHOTO_LIBRARY_TITLE">Block Photo Library</Title>
+
+            <!-- <ShortDesc res_id="DISABLE_PHOTO_LIBRARY_SHORTDESC">Block or allow application access to photo library</ShortDesc> -->
+
+            <BooleanTrueLabel res_id="LABEL_ON">On</BooleanTrueLabel>
+
+            <BooleanFalseLabel res_id="LABEL_OFF">Off</BooleanFalseLabel>
+
+            <Description res_id="DISABLE_PHOTO_LIBRARY_DESC">
+If On, prevents an app from accessing the Photo Library on the device.
+
+Default value is On.
+</Description>
+        </PolicyStrings>
+    <PolicyPriority>Normal</PolicyPriority>
+<PolicyActiveFor>XenMobile,MDXMobileSDK,Intune</PolicyActiveFor>
+<PolicyInactiveValue>false</PolicyInactiveValue>
+</Policy>
+
+    <Policy>
+      <PolicyName>DisableMicrophone</PolicyName>
+      <PolicyType>boolean</PolicyType>
+      <PolicyCategory>Security_AppRestrictions</PolicyCategory>
+      <PolicyDefault>true</PolicyDefault>
+      <PolicyStrings>
+        <Title res_id="DISABLE_MICROPHONE_TITLE">Block mic record</Title>
+
+        <!-- <ShortDesc res_id="STRING_BLOCK_OR_ALLOW_ACCESS_TO_MICROPHONE">Block or allow application access to microphone</ShortDesc> -->
+
+        <BooleanTrueLabel res_id="LABEL_ON">On</BooleanTrueLabel>
+
+        <BooleanFalseLabel res_id="LABEL_OFF">Off</BooleanFalseLabel>
+
+        <Description res_id="DISABLE_MICROPHONE_DESC">
+If On, prevents an app from directly using the microphone hardware.
+
+Default value is On.
+</Description>
+      </PolicyStrings>
+    <PolicyPriority>Normal</PolicyPriority>
+<PolicyActiveFor>XenMobile,MDXMobileSDK,Intune</PolicyActiveFor>
+<PolicyInactiveValue>false</PolicyInactiveValue>
+</Policy>
+
+    <Policy>
+      <PolicyName>DisableDictation</PolicyName>
+      <PolicyType>boolean</PolicyType>
+      <PolicyCategory>Security_AppRestrictions</PolicyCategory>
+      <PolicyDefault>true</PolicyDefault>
+      <PolicyStrings>
+        <Title res_id="DISABLE_DICTATION_TITLE">Block dictation</Title>
+
+        <!-- <ShortDesc res_id="STRING_BLOCK_OR_ALLOW_ACCESS_TO_MICROPHONE">Block or allow application access to microphone</ShortDesc> -->
+
+        <BooleanTrueLabel res_id="LABEL_ON">On</BooleanTrueLabel>
+
+        <BooleanFalseLabel res_id="LABEL_OFF">Off</BooleanFalseLabel>
+
+        <Description res_id="DISABLE_DICTATION_DESC">
+If On, prevents an app from directly using dictation services.
+
+Default value is On.
+</Description>
+      </PolicyStrings>
+    <PolicyPriority>Normal</PolicyPriority>
+<PolicyActiveFor>XenMobile,MDXMobileSDK,Intune</PolicyActiveFor>
+<PolicyInactiveValue>false</PolicyInactiveValue>
+</Policy>
+
+    <Policy>
+      <PolicyName>DisableLocation</PolicyName>
+      <PolicyType>boolean</PolicyType>
+      <PolicyCategory>Security_AppRestrictions</PolicyCategory>
+      <PolicyDefault>true</PolicyDefault>
+      <PolicyStrings>
+        <Title res_id="DISABLE_LOCATION_TITLE">Block location services</Title>
+
+        <!-- <ShortDesc res_id="DISABLE_LOCATION_SHORTDESC">Block or allow application access to location services</ShortDesc> -->
+
+        <BooleanTrueLabel res_id="LABEL_ON">On</BooleanTrueLabel>
+
+        <BooleanFalseLabel res_id="LABEL_OFF">Off</BooleanFalseLabel>
+
+        <Description res_id="DISABLE_LOCATION_DESC">
+If On, prevents an app from using the location services components (GPS or network).
+
+Default value is On.
+</Description>
+      </PolicyStrings>
+    <PolicyPriority>Normal</PolicyPriority>
+<PolicyActiveFor>XenMobile,MDXMobileSDK,Intune</PolicyActiveFor>
+<PolicyInactiveValue>false</PolicyInactiveValue>
+</Policy>
+
+    <Policy>
+      <PolicyName>DisableSms</PolicyName>
+      <PolicyType>boolean</PolicyType>
+      <PolicyCategory>Security_AppRestrictions</PolicyCategory>
+      <PolicyDefault>true</PolicyDefault>
+      <PolicyStrings>
+        <Title res_id="DISABLE_SMS_TITLE">Block SMS compose</Title>
+
+        <!-- <ShortDesc res_id="DISABLE_SMS_SHORTDESC">Block or allow application access to the SMS composer feature</ShortDesc> -->
+
+        <BooleanTrueLabel res_id="LABEL_ON">On</BooleanTrueLabel>
+
+        <BooleanFalseLabel res_id="LABEL_OFF">Off</BooleanFalseLabel>
+
+        <Description res_id="DISABLE_SMS_DESC">
+If On, prevents an app from using the SMS compose feature used to send SMS/text messages from the app.
+
+Default value is On.
+</Description>
+      </PolicyStrings>
+    <PolicyPriority>Normal</PolicyPriority>
+<PolicyActiveFor>XenMobile,MDXMobileSDK,Intune</PolicyActiveFor>
+<PolicyInactiveValue>false</PolicyInactiveValue>
+</Policy>
+
+    <Policy>
+      <PolicyName>DisableiCloud</PolicyName>
+      <PolicyType>boolean</PolicyType>
+      <PolicyCategory>Security_AppRestrictions</PolicyCategory>
+      <PolicyDefault>true</PolicyDefault>
+      <PolicyStrings>
+        <Title res_id="DISABLE_ICLOUD_TITLE">Block iCloud</Title>
+
+        <!-- <ShortDesc res_id="DISABLE_ICLOUD_SHORTDESC">Block or allow application access to iCloud</ShortDesc> -->
+
+        <BooleanTrueLabel res_id="LABEL_ON">On</BooleanTrueLabel>
+
+        <BooleanFalseLabel res_id="LABEL_OFF">Off</BooleanFalseLabel>
+
+        <Description res_id="DISABLE_ICLOUD_DESC">
+If On, prevents an app from using iCloud for the storing and sharing of settings and data. Note: iCloud data file backup is controlled by the Block file backup policy.
+
+Default value is On.
+</Description>
+      </PolicyStrings>
+    <PolicyPriority>Normal</PolicyPriority>
+<PolicyActiveFor>XenMobile,MDXMobileSDK,Intune</PolicyActiveFor>
+<PolicyInactiveValue>false</PolicyInactiveValue>
+</Policy>
+
+    <Policy>
+        <PolicyName>DisableLookUp</PolicyName>
+        <PolicyType>boolean</PolicyType>
+        <PolicyCategory>Security_AppRestrictions</PolicyCategory>
+        <PolicyDefault>true</PolicyDefault>
+        <PolicyStrings>
+            <Title res_id="DISABLE_LOOKUP_TITLE">Block look up</Title>
+
+            <!-- <ShortDesc res_id="DISABLE_DICTIONARY_LOOKUP_SHORTDESC">Block or allow highlighted text lookup</ShortDesc> -->
+
+            <BooleanTrueLabel res_id="LABEL_ON">On</BooleanTrueLabel>
+
+            <BooleanFalseLabel res_id="LABEL_OFF">Off</BooleanFalseLabel>
+
+            <Description res_id="DISABLE_LOOKUP_DESC">
+                If On, prevents an app from using the Look Up feature, which searches for highlighted text in the Dictionary, iTunes, the App Store, movie showtimes, nearby locations and more.
+
+                Default value is On.
+            </Description>
+        </PolicyStrings>
+    <PolicyPriority>Normal</PolicyPriority>
+<PolicyActiveFor>XenMobile,MDXMobileSDK,Intune</PolicyActiveFor>
+<PolicyInactiveValue>false</PolicyInactiveValue>
+</Policy>
+
+    <Policy>
+      <PolicyName>DisableBackup</PolicyName>
+      <PolicyType>boolean</PolicyType>
+      <PolicyCategory>Security_AppRestrictions</PolicyCategory>
+      <PolicyDefault>true</PolicyDefault>
+      <PolicyStrings>
+        <Title res_id="DISABLE_BACKUP_TITLE">Block file backup</Title>
+
+        <!-- <ShortDesc res_id="DISABLE_BACKUP_SHORTDESC">Block or allow file backup via iCloud or iTunes</ShortDesc> -->
+
+        <BooleanTrueLabel res_id="LABEL_ON">On</BooleanTrueLabel>
+
+        <BooleanFalseLabel res_id="LABEL_OFF">Off</BooleanFalseLabel>
+
+        <Description res_id="DISABLE_BACKUP_DESC">
+If On, prevents data files from being backed up by iCloud or iTunes.
+
+Default value is On.
+</Description>
+      </PolicyStrings>
+    <PolicyPriority>Normal</PolicyPriority>
+<PolicyActiveFor>XenMobile,MDXMobileSDK,Intune</PolicyActiveFor>
+<PolicyInactiveValue>false</PolicyInactiveValue>
+</Policy>
+
+    <Policy>
+      <PolicyName>DisablePrinting</PolicyName>
+      <PolicyType>boolean</PolicyType>
+      <PolicyCategory>Security_AppRestrictions</PolicyCategory>
+      <PolicyDefault>true</PolicyDefault>
+
+      <PolicyStrings>
+        <Title res_id="DISABLE_AIRPRINT_TITLE">Block AirPrint</Title>
+
+        <!-- <ShortDesc res_id="DISABLE_PRINTING_SHORTDESC">Block or allow application access to AirPrint</ShortDesc> -->
+
+        <BooleanTrueLabel res_id="LABEL_ON">On</BooleanTrueLabel>
+
+        <BooleanFalseLabel res_id="LABEL_OFF">Off</BooleanFalseLabel>
+
+        <Description res_id="DISABLE_AIRPRINT_DESC">
+If On, prevents an app from using AirPrint features for printing data to AirPrint-enabled printers.
+
+Default value is On.
+</Description>
+      </PolicyStrings>
+    <PolicyPriority>Normal</PolicyPriority>
+<PolicyActiveFor>XenMobile,MDXMobileSDK</PolicyActiveFor>
+<PolicyInactiveValue>false</PolicyInactiveValue>
+</Policy>
+
+    <Policy>
+      <PolicyName>DisableAirDrop</PolicyName>
+      <PolicyType>boolean</PolicyType>
+      <PolicyCategory>Security_AppRestrictions</PolicyCategory>
+      <PolicyDefault>true</PolicyDefault>
+      <PolicyStrings>
+        <Title res_id="DISABLE_AIRDROP_TITLE">Block AirDrop</Title>
+
+        <!-- <ShortDesc res_id="DISABLE_AIRDROP_SHORTDESC">Block or allow application access to AirDrop</ShortDesc> -->
+
+        <BooleanTrueLabel res_id="LABEL_ON">On</BooleanTrueLabel>
+
+        <BooleanFalseLabel res_id="LABEL_OFF">Off</BooleanFalseLabel>
+
+        <Description res_id="DISABLE_AIRDROP_DESC">
+If On, prevents an app from using AirDrop.
+
+Default value is On.
+</Description>
+      </PolicyStrings>
+    <PolicyPriority>Normal</PolicyPriority>
+<PolicyActiveFor>XenMobile,MDXMobileSDK,Intune</PolicyActiveFor>
+<PolicyInactiveValue>false</PolicyInactiveValue>
+</Policy>
+
+    <Policy>
+      <PolicyName>DisableSocialMedia</PolicyName>
+      <PolicyType>boolean</PolicyType>
+      <PolicyCategory>Security_AppRestrictions</PolicyCategory>
+      <PolicyDefault>true</PolicyDefault>
+      <PolicyStrings>
+        <Title res_id="DISABLE_SOCIALMEDIA_TITLE">Block Facebook and Twitter APIs</Title>
+
+        <!-- <ShortDesc res_id="DISABLE_SOCIALMEDIA_SHORTDESC">Block or allow application access to Social Networking</ShortDesc> -->
+
+        <BooleanTrueLabel res_id="LABEL_ON">On</BooleanTrueLabel>
+
+        <BooleanFalseLabel res_id="LABEL_OFF">Off</BooleanFalseLabel>
+
+        <Description res_id="DISABLE_SOCIALMEDIA_DESC">
+If On, prevents an app from using the iOS Facebook and Twitter APIs.
+
+Default value is On.
+</Description>
+      </PolicyStrings>
+    <PolicyPriority>Normal</PolicyPriority>
+<PolicyActiveFor>XenMobile,MDXMobileSDK,Intune</PolicyActiveFor>
+<PolicyInactiveValue>false</PolicyInactiveValue>
+</Policy>
+
+    <Policy>
+      <PolicyName>ObscureScreen</PolicyName>
+      <PolicyType>boolean</PolicyType>
+      <PolicyCategory>Security_AppRestrictions</PolicyCategory>
+      <PolicyDefault>true</PolicyDefault>
+      <PolicyStrings>
+        <Title res_id="OBSCURESCREEN_TITLE">Obscure screen contents</Title>
+
+        <!-- <ShortDesc res_id="OBSCURESCREEN_SHORTDESC">Obscure screen when app is in the background.</ShortDesc> -->
+
+        <BooleanTrueLabel res_id="LABEL_ON">On</BooleanTrueLabel>
+
+        <BooleanFalseLabel res_id="LABEL_OFF">Off</BooleanFalseLabel>
+
+        <Description res_id="OBSCURESCREEN_DESC">
+If On, when users switch apps, the screen is obscured. This policy prevents iOS from recording screen contents and displaying thumbnails.
+
+Default value is On.
+</Description>
+      </PolicyStrings>
+    <PolicyPriority>Normal</PolicyPriority>
+<PolicyActiveFor>XenMobile,MDXMobileSDK,Intune</PolicyActiveFor>
+<PolicyInactiveValue>false</PolicyInactiveValue>
+</Policy>
+
+    <Policy>
+        <PolicyName>DisableKeyboard</PolicyName>
+        <PolicyType>boolean</PolicyType>
+        <PolicyCategory>Security_AppRestrictions</PolicyCategory>
+        <PolicyDefault>true</PolicyDefault>
+        <PolicyStrings>
+            <Title res_id="DISABLE_KEYBOARD_TITLE">Block 3rd party keyboards (iOS 8+ only)</Title>
+
+            <BooleanTrueLabel res_id="LABEL_ON">On</BooleanTrueLabel>
+
+            <BooleanFalseLabel res_id="LABEL_OFF">Off</BooleanFalseLabel>
+
+            <Description res_id="DISABLE_KEYBOARD_DESC">
+If On, prevents an app from using 3rd party keyboard extensions on iOS 8+.
+
+Default value is On.
+</Description>
+        </PolicyStrings>
+    <PolicyPriority>Normal</PolicyPriority>
+<PolicyActiveFor>XenMobile,MDXMobileSDK,Intune</PolicyActiveFor>
+<PolicyInactiveValue>false</PolicyInactiveValue>
+</Policy>
+
+      <Policy>
+         <PolicyName>GeofenceLongitude</PolicyName>
+         <PolicyType>string</PolicyType>
+         <PolicyCategory>Geofence</PolicyCategory>
+         <PolicyDefault>0</PolicyDefault>
+         <PolicyStrings>
+           <Title res_id="GEOFENCE_LONGITUDE_TITLE">Center point longitude</Title>
+           <Description res_id="GEOFENCE_LONGITUDE_DESC">
+Longitude (X coordinate) of the center point of point/radius geofence in which the app is constrained to operate. When operated outside the configured geofence, the app remains locked.
+
+Should be expressed in signed degrees format (DDD.dddd), for example "-31.9635". West longitudes should be prefaced with a minus sign.
+
+Default value is 0.
+</Description>
+         </PolicyStrings>
+       <PolicyPriority>Normal</PolicyPriority>
+<PolicyActiveFor>XenMobile,MDXMobileSDK</PolicyActiveFor>
+<PolicyInactiveValue/>
+</Policy>
+
+       <Policy>
+         <PolicyName>GeofenceLatitude</PolicyName>
+         <PolicyType>string</PolicyType>
+         <PolicyCategory>Geofence</PolicyCategory>
+         <PolicyDefault>0</PolicyDefault>
+         <PolicyStrings>
+           <Title res_id="GEOFENCE_LATITUDE_TITLE">Center point latitude</Title>
+           <Description res_id="GEOFENCE_LATITUDE_DESC">
+Latitude (Y coordinate) of the center point of point/radius geofence in which the app is constrained to operate. When operated outside the configured geofence, the app remains locked.
+
+Should be expressed in signed degrees format (DDD.dddd), for example "43.06581". Southern latitudes should be prefaced with a minus sign.
+
+Default value is 0.
+</Description>
+         </PolicyStrings>
+       <PolicyPriority>Normal</PolicyPriority>
+<PolicyActiveFor>XenMobile,MDXMobileSDK</PolicyActiveFor>
+<PolicyInactiveValue/>
+</Policy>
+
+       <Policy>
+         <PolicyName>GeofenceRadius</PolicyName>
+         <PolicyType>string</PolicyType>
+         <PolicyCategory>Geofence</PolicyCategory>
+         <PolicyDefault>0</PolicyDefault>
+         <PolicyStrings>
+           <Title res_id="GEOFENCE_RADIUS_TITLE">Radius</Title>
+           <Description res_id="GEOFENCE_RADIUS_DESC_IOS">
+Radius of the geofence in which the app is constrained to operate. When operated outside the configured geofence, the app remains locked.
+
+Should be expressed in meters.  When set to zero, the geofence is disabled.
+
+When the Block location services policy is enabled, geofencing does not work properly.
+
+Default is 0 (disabled).
+</Description>
+         </PolicyStrings>
+       <PolicyPriority>Normal</PolicyPriority>
+<PolicyActiveFor>XenMobile,MDXMobileSDK</PolicyActiveFor>
+<PolicyInactiveValue>0</PolicyInactiveValue>
+</Policy>
+
+<Policy>
+    <PolicyName>MailCompose</PolicyName>
+    <PolicyType>enum</PolicyType>
+    <PolicyEnumValues>
+        <PolicyEnumValue>
+            <PolicyEnumValueId>WorxMail</PolicyEnumValueId>
+            <PolicyEnumValueString res_id="COMPOSE_WORXMAIL">Secure Mail</PolicyEnumValueString>
+        </PolicyEnumValue>
+        <PolicyEnumValue>
+            <PolicyEnumValueId>NativeMail</PolicyEnumValueId>
+            <PolicyEnumValueString res_id="COMPOSE_NATIVEMAIL">Native mail</PolicyEnumValueString>
+        </PolicyEnumValue>
+        <PolicyEnumValue>
+            <PolicyEnumValueId>Blocked</PolicyEnumValueId>
+            <PolicyEnumValueString res_id="STRING_BLOCKED">Blocked</PolicyEnumValueString>
+        </PolicyEnumValue>
+
+    </PolicyEnumValues>
+
+    <PolicyCategory>MailRedirection</PolicyCategory>
+    <PolicyDefault>WorxMail</PolicyDefault>
+    <PolicyStrings>
+        <Title res_id="MAIL_REDIRECTION_STRING">Mail Redirection</Title>
+
+        <!-- <ShortDesc res_id="DOCEX_SHORTDESC">Restrict document exchange with other applications</ShortDesc> -->
+
+       <Description res_id="MAIL_DESC_COMPOSE">
+Blocked restricts any mail compose. Secure Mail redirects mail compose to Secure Mail.  Native mail redirects mail compose to native mail if an account is set up. Default value is Secure Mail.
+</Description>
+    </PolicyStrings>
+<PolicyPriority>Normal</PolicyPriority>
+<PolicyActiveFor>XenMobile,MDXMobileSDK</PolicyActiveFor>
+<PolicyInactiveValue>NativeMail</PolicyInactiveValue>
+</Policy>
+
+        <!-- End App Restriction -->
+
+    </Policies>
+</PolicyMetadata>
