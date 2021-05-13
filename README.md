@@ -18,9 +18,9 @@ Before you download and utilize the Citrix MAM SDKs you **must**:
 
 See the [Releases](https://github.com/citrix/citrix-mam-sdks/releases) for download links to the different MAM SDKs.
 
-The iOS SDK is also released in a Cocoapod-compatible manner, allowing customers to consume the iOS MAM SDKs in a way that works with a Cocoapod build system.
+The iOS SDK is also released in a Cocoapod-compatible manner, allowing customers to consume the iOS MAM SDKs in a way that works with the Cocoapod package manager.
 
-Likewise, the Java Android SDK in a Maven Repository-compatible manner.  This enables customers to consume the Android MAM SDKs in a way that works with a Gradle or Maven build system.
+Likewise, the Java Android SDK is a Maven Repository-compatible manner.  This enables customers to consume the Android MAM SDKs in a way that works with the Gradle or Maven package manager.
 
 ## Sample Apps
 
