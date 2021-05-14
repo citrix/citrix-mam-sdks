@@ -8,11 +8,9 @@ For more information about the MAM SDK APIs, see the [developer documentation](h
 
 ## Licensing and Agreements
 
-Before you download and utilize the Citrix MAM SDKs you **must**:
+Before you download and utilize the Citrix MAM SDK you must:
 
-* Review the [Citrix License Agreement](https://developer.cloud.com/citrix-api-terms-of-use). Print and keep a copy of this license for your records. By downloading and using the Citrix MAM SDKs you agree to these licensing terms.  If you do not accept them the terms then do not use the software.
-
-* Review the [Export Agreement](EXPORT_CONTROLS). Print and keep a copy of this license for your records. If you cannot acknowledge it is your responsibility to comply with any and all export and import laws, and that Citrix Systems Inc has no further responsibility, then do not use the software.
+* Review the [Citrix License Agreement](https://developer.cloud.com/citrix-api-terms-of-use). By downloading and using the Citrix MAM SDK you agree to these licensing terms.  
 
 ## Releases
 
@@ -20,7 +18,7 @@ See the [Releases](https://github.com/citrix/citrix-mam-sdks/releases) for downl
 
 The iOS SDK is also released in a Cocoapod-compatible manner, allowing customers to consume the iOS MAM SDKs in a way that works with the Cocoapod package manager.
 
-Likewise, the Java Android SDK is a Maven Repository-compatible manner.  This enables customers to consume the Android MAM SDKs in a way that works with the Gradle or Maven package manager.
+Likewise, the Java Android SDK is released in a Maven Repository-compatible manner.  This enables customers to consume the Android MAM SDKs in a way that works with the Gradle or Maven package manager.
 
 ## Sample Apps
 
