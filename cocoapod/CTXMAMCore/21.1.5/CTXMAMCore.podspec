@@ -6,13 +6,13 @@ Pod::Spec.new do |s|
     This pod provides the core functionality for the Citrix MAM SDK
     DESC
     s.homepage     = 'https://github.com/citrix/citrix-mam-sdks'
-    s.license = { :type => "Copyright (c) 2021 Citrix Systems, Inc. All rights reserved.",
+    s.ios.deployment_target = '10.0'
+    s.license = {
+        :type => "https://developer.cloud.com/citrix-api-terms-of-use",
         :text => "Custom"
     }
  
     s.source = { :http => 'https://raw.githubusercontent.com/citrix/citrix-mam-sdks/develop/cocoapod/CTXMAMCore/21.1.5/CTXMAMCore.zip' }
-    
-    s.ios.deployment_target = '10.0'
     
     s.ios.source_files = [
         'CTXMAMCore/CTXMAMCore.framework/Headers/**/*.h'
@@ -22,6 +22,6 @@ Pod::Spec.new do |s|
     
     s.ios.vendored_frameworks = 'CTXMAMCore/CTXMAMCore.framework'
     
-    s.dependency  'CitrixLoggerDynamicFramework'
+    s.dependency  'CitrixLogger'
 
 end
