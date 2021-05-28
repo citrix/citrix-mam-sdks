@@ -7,7 +7,7 @@ CitrixLogger framework is used for log creation, log collection, log packaging a
                        DESC
     s.homepage         = 'https://github.com/citrix/citrix-mam-sdks'
     s.module_name      = s.name
-    s.author           = 'Citrix Systems, Inc.
+    s.author           = 'Citrix Systems, Inc.'
     s.platform         = :ios, "8.0"
     s.requires_arc     = true
     s.ios.deployment_target = '8.0'
