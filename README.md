@@ -14,11 +14,27 @@ Before you download and utilize the Citrix MAM SDK you must:
 
 ## Releases
 
-See the [Releases](https://github.com/citrix/citrix-mam-sdks/releases) for download links to the different MAM SDKs.
+See the [Releases](https://github.com/citrix/citrix-mam-sdks/releases) for download links to the different MAM SDKs. From GitHub you can recieve email notifications for new releases by clicking on the "Watch" drop-down menu in the upper right-hand corner and selecting Customer -> Releases.
 
 The iOS SDK is also released in a Cocoapod-compatible manner, allowing customers to consume the iOS MAM SDKs in a way that works with the Cocoapod package manager.
 
-Likewise, the Java Android SDK is released in a Maven Repository-compatible manner.  This enables customers to consume the Android MAM SDKs in a way that works with the Gradle or Maven package manager.
+Likewise, the Java Android SDK is released in a Maven Repository-compatible manner.  This enables customers to consume the Android MAM SDKs in a way that works with the Gradle or Maven package manager. For example in Gradle's `build.gradle` file you can add the following:
+```
+android {
+    ... snip ...
+    repositories {
+        maven { url "https://raw.githubusercontent.com/citrix/citrix-mam-sdks/main/maven" }
+        google()
+        jcenter()
+    }
+}
+
+dependencies {
+    ... snip ...
+    implementation group: 'com.citrix.android.sdk', name: 'mamsdk', version: "${project.ext.mamSdkVersion}"
+}
+```
+See the Android Java sample browser app for a complete example.
 
 ## Sample Apps
 
