@@ -7,15 +7,18 @@ Pod::Spec.new do |s|
 This pod provides the core functionality for the Citrix MAM SDK. See https://developer.cloud.com/citrixworkspace/mobile-application-integration to learn more.
     DESC
     s.homepage     = 'https://github.com/citrix/citrix-mam-sdks'
-    s.ios.deployment_target = '10.0'
+    s.platform     = :ios, '12.0'
     s.license = {
         :type => "https://developer.cloud.com/citrix-api-terms-of-use",
         :text => "Custom"
     }
-    s.source = { :http => 'https://raw.githubusercontent.com/citrix/citrix-mam-sdks/develop/cocoapod/CTXMAMCore/21.1.5/CTXMAMCore.zip' }
+    s.source = { :http => 'https://raw.githubusercontent.com/citrix/citrix-mam-sdks/main/cocoapod/CTXMAMCore/21.1.5/CTXMAMCore.zip' }
     s.source_files = 'CTXMAMCore/CTXMAMCore.framework/Headers/**/*.h'
     s.public_header_files = 'CTXMAMCore/CTXMAMCore.framework/Headers/**/*.h'
     s.vendored_frameworks = 'CTXMAMCore/CTXMAMCore.framework'
+
+    s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
+    s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
 
     s.dependency  'CitrixLogger'
 end
