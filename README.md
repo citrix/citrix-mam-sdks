@@ -42,5 +42,5 @@ Citrix has open-sourced some sample mobile apps that demonstrate how to use the 
 
 - [citrix-mam-sdk-sample-browser-app-ios-objc](https://github.com/citrix/citrix-mam-sdk-sample-browser-app-ios-objc)
 - [citrix-mam-sdk-sample-browser-app-android-java](https://github.com/citrix/citrix-mam-sdk-sample-browser-app-android-java)
-- [citrix-mam-sdk-sample-browser-app-android-xamarin-forms](citrix-mam-sdk-sample-browser-app-android-xamarin-forms)
+- [citrix-mam-sdk-sample-browser-app-android-xamarin-forms](https://github.com/citrix/citrix-mam-sdk-sample-browser-app-android-xamarin-forms)
 - [citrix-mam-sdk-sample-browser-app-android-cordova](https://github.com/citrix/citrix-mam-sdk-sample-browser-app-android-cordova)
