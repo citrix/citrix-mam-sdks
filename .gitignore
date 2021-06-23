@@ -95,3 +95,7 @@ build
 # Ignore IDE files from IntelliJ IDEA
 .idea
 bin
+
+# Ignore maven-metadata.xml.md5 and maven-metadata.xml.sha1 files
+maven-metadata.xml.md5
+maven-metadata.xml.sha1
