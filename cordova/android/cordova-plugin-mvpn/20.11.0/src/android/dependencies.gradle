@@ -1,0 +1,60 @@
+apply plugin: 'maven'
+
+repositories {
+	jcenter()
+	flatDir {
+		dirs 'src/main/libs'
+	}
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly 'org.projectlombok:lombok:1.18.4'
+    annotationProcessor 'org.projectlombok:lombok:1.18.4'
+	implementation(name:'mvpnsdk', ext:'aar')
+	implementation(name:'coresdk', ext:'aar')
+	implementation(name:'authsdk', ext:'aar')
+	implementation(name:'configsdk', ext:'aar')
+	implementation(name:'loggersdk', ext:'aar')
+	implementation(name:'citrix-loggersdk', ext:'aar')
+	implementation(name:'worxsdk', ext:'aar')
+	implementation(name:'googleanalyticssdk', ext:'aar')
+	implementation(name:'cryptoapi', ext:'aar')
+	implementation(name:'securestorage', ext:'aar')
+
+    implementation 'com.linkedin.dexmaker:dexmaker:2.19.1'
+    implementation 'com.squareup.okhttp3:okhttp:3.14.2'
+	implementation 'com.squareup.okio:okio:1.17.3'
+
+	androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+	androidTestImplementation 'com.android.support.test:runner:1.0.2'
+	androidTestImplementation 'com.android.support.test:rules:1.0.2'
+}
+
+ext.cdvMinSdkVersion = 23
+
+android {
+	defaultConfig {
+		testApplicationId "com.citrix.mvpn.cordova.mvpntests"
+		testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+	}
+	packagingOptions {
+		exclude 'META-INF/NOTICE'
+		exclude 'META-INF/LICENSE'
+	}
+	buildTypes {
+		debug {
+			testCoverageEnabled true
+		}
+	}
+}
+
+task copyCoverageReport(type: Copy) {
+	from "$buildDir/outputs/code_coverage/debugAndroidTest/connected"
+	include '**/*'
+	into "$buildDir/outputs/jacoco"
+	rename {
+		String fileName -> fileName.replace(fileName, "connectedAndroidTestCoverage.ec")
+	}
+}
