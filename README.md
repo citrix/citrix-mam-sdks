@@ -1,10 +1,12 @@
 # Citrix MAM SDK
 
-The MAM SDK instrument your apps to enable enforcing policies and controls that are configured in Citrix Endpoint Management. The MAM SDK replaces areas of mobile device management not covered by the iOS and Android platforms. Rather than wrapping third-party apps using the MDX Service or MDX Toolkit, you instead create apps using the MAM SDK. 
+The MAM SDK instruments your apps to enable enforcing policies and controls that are configured in Citrix Endpoint Management. It fills in areas of mobile device management not covered by the iOS and Android platforms. Rather than wrapping third-party apps using the MDX Service or MDX Toolkit, you instead create apps using the MAM SDK. 
 
 See the [MAM SDK Overview](https://docs.citrix.com/en-us/mdx-toolkit/mam-sdk-overview.html) for more information.
 
 For more information about the MAM SDK APIs, see the [developer documentation](https://developer.cloud.com/citrixworkspace/mobile-application-integration/).
+
+See the [release notes](https://github.com/citrix/citrix-mam-sdks/releases) to learn what is new in each release.
 
 ## Licensing and Agreements
 
@@ -14,11 +16,13 @@ Before you download and utilize the Citrix MAM SDK you must:
 
 ## Releases
 
-See the [Releases](https://github.com/citrix/citrix-mam-sdks/releases) for download links to the different MAM SDKs. From GitHub you can recieve email notifications for new releases by clicking on the "Watch" drop-down menu in the upper right-hand corner and selecting Customer -> Releases.
+See the [Releases](https://github.com/citrix/citrix-mam-sdks/releases) for download links to the different MAM SDKs for each platform. From GitHub you can recieve email notifications for new releases by clicking on the "Watch" drop-down menu in the upper right-hand corner and selecting Custom -> Releases.
 
-The iOS SDK is also released in a Cocoapod-compatible manner, allowing customers to consume the iOS MAM SDKs in a way that works with the Cocoapod package manager.
+### iOS
+The iOS SDK is also released in a Cocoapod-compatible manner, allowing customers to consume the iOS MAM SDKs in a way that works with the Cocoapod package manager.  The Pods are available from this site, and also posted to https://cocoapods.org/
 
-Likewise, the Java Android SDK is released in a Maven Repository-compatible manner.  This enables customers to consume the Android MAM SDKs in a way that works with the Gradle or Maven package manager. For example in Gradle's `build.gradle` file you can add the following:
+### Android
+The Java Android MAM SDK is released in a Maven Repository-compatible manner.  This enables customers to consume the Android MAM SDKs in a way that works with the Gradle or Maven package manager. For example in Gradle's `build.gradle` file you would add the following:
 ```
 android {
     ... snip ...
@@ -35,6 +39,13 @@ dependencies {
 }
 ```
 See the Android Java sample browser app for a complete example.
+
+### Cordova
+The Cordova MAM SDK is released as a Cordova plugin.  The plugins are available from this site, and also posted to https://www.npmjs.com/.
+
+### Xamarin
+
+The Xamarin MAM SDK is released as a .nupkg file.  The packages are available fromt his site, and also posted to https://www.nuget.org/.
 
 ## Sample Apps
 
