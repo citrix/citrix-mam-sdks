@@ -45,7 +45,7 @@ The Cordova MAM SDK is released as a Cordova plugin.  The plugins are available 
 
 ### Xamarin
 
-The Xamarin MAM SDK is released as a .nupkg file.  The packages are available fromt his site, and also posted to https://www.nuget.org/.
+The Xamarin MAM SDK is released as a .nupkg file.  The packages are available from this site, and also posted to https://www.nuget.org/.
 
 ## Sample Apps
 
@@ -53,5 +53,5 @@ Citrix has open-sourced some sample mobile apps that demonstrate how to use the 
 
 - [citrix-mam-sdk-sample-browser-app-ios-objc](https://github.com/citrix/citrix-mam-sdk-sample-browser-app-ios-objc)
 - [citrix-mam-sdk-sample-browser-app-android-java](https://github.com/citrix/citrix-mam-sdk-sample-browser-app-android-java)
-- [citrix-mam-sdk-sample-browser-app-android-xamarin-forms](https://github.com/citrix/citrix-mam-sdk-sample-browser-app-android-xamarin-forms)
 - [citrix-mam-sdk-sample-browser-app-android-cordova](https://github.com/citrix/citrix-mam-sdk-sample-browser-app-android-cordova)
+- [citrix-mam-sdk-sample-browser-app-xamarin](https://github.com/citrix/citrix-mam-sdk-sample-browser-app-xamarin)
