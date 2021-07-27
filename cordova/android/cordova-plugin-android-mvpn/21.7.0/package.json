@@ -1,0 +1,41 @@
+{
+    "name": "@citrix/cordova-plugin-android-mvpn",
+    "version": "21.7.0",
+    "description": "Useful plugin for developing Cordova apps with Citrix Endpoint Management's MicroVPN",
+    "types": "./types/index.d.ts",
+    "cordova": {
+        "id": "cordova-plugin-android-mvpn",
+        "platforms": [
+            "android"
+        ]
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/citrix/citrix-mam-sdks"
+    },
+    "bugs": {
+        "url": "todo"
+    },
+    "keywords": [
+        "cordova",
+        "citrix",
+        "mvpn",
+        "microvpn",
+        "micro",
+        "vpn",
+        "endpoint",
+        "management"
+    ],
+    "engines": [
+        {
+            "name": "cordova",
+            "version": ">=3.0.0"
+        }
+    ],
+    "author": "Citrix Systems, Inc.",
+    "license": "https://developer.cloud.com/citrix-api-terms-of-use",
+    "dependencies": {
+        "uuid": "^3.3.3"
+    },
+    "devDpendencies": {}
+}

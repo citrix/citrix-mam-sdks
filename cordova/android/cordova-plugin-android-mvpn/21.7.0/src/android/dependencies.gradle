@@ -1,0 +1,122 @@
+apply plugin: 'maven'
+apply plugin: 'jacoco'
+
+repositories {
+	jcenter()
+	flatDir {
+		dirs 'src/main/libs'
+	}
+	mavenLocal()
+	mavenCentral()
+}
+
+def retrofit_version = '2.5.0'
+def okhttp3_version = '3.12.1'
+def kotlin_version = '1.3.20'
+def koin_version = '2.0.1'
+def support_app_compat_version = '1.2.0'
+def androidx_browser_version = '1.2.0'
+def rx_kotlin_version = '2.3.0'
+def rx_android_version = '2.1.1'
+def gson_version = '2.8.5'
+def test_runner_version = '1.1.1'
+
+dependencies {
+	compileOnly 'org.projectlombok:lombok:1.18.4'
+	annotationProcessor 'org.projectlombok:lombok:1.18.4'
+	implementation(name:'analyticssdk', ext:'aar')
+	implementation(name:'appcoresdk', ext:'aar')
+	implementation(name:'apputils', ext:'aar')
+	implementation(name:'authmanagerlitelib', ext:'aar')
+	implementation(name:'authsdk', ext:'aar')
+	implementation(name:'citrix-loggersdk', ext:'aar')
+	implementation(name:'configsdk', ext:'aar')
+	implementation(name:'coresdk', ext:'aar')
+	implementation(name:'cryptoapi', ext:'aar')
+	implementation(name:'googleanalyticssdk', ext:'aar')
+	implementation(name:'loggingsdk', ext:'aar')
+	implementation(name:'mamsdk', ext:'aar')
+	implementation(name:'mamservicessdk', ext:'aar')
+	implementation(name:'mvpnsdk', ext:'aar')
+	implementation(name:'securestorage', ext:'aar')
+	implementation(name:'workspacehelperlib', ext:'aar')
+
+	implementation 'com.linkedin.dexmaker:dexmaker:2.19.1'
+	implementation "com.squareup.okhttp3:okhttp:$okhttp3_version"
+	implementation "com.squareup.okhttp3:okhttp-urlconnection:$okhttp3_version"
+	implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+	implementation "com.squareup.retrofit2:converter-scalars:$retrofit_version"
+	implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
+
+	implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+	implementation "org.koin:koin-core:$koin_version"
+	implementation "org.koin:koin-android:$koin_version"
+	implementation "androidx.appcompat:appcompat:$support_app_compat_version"
+	implementation "androidx.browser:browser:$androidx_browser_version"
+	implementation "io.reactivex.rxjava2:rxkotlin:$rx_kotlin_version"
+	implementation "io.reactivex.rxjava2:rxandroid:$rx_android_version"
+	implementation "com.google.code.gson:gson:$gson_version"
+
+	androidTestImplementation "androidx.test:runner:$test_runner_version"
+	androidTestImplementation "androidx.test:core:$test_runner_version"
+	androidTestImplementation "androidx.test.ext:junit:$test_runner_version"
+	androidTestImplementation "androidx.test:rules:$test_runner_version"
+}
+
+ext.cdvMinSdkVersion = 24
+
+android {
+	ndkVersion '21.3.6528147'
+	testOptions.unitTests.includeAndroidResources = true
+	defaultConfig {
+		testApplicationId "com.citrix.mvpn.cordova.mvpntests"
+		testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+	}
+	packagingOptions {
+		exclude 'META-INF/NOTICE'
+		exclude 'META-INF/LICENSE'
+	}
+	buildTypes {
+		debug {
+			testCoverageEnabled true
+		}
+	}
+}
+
+def fileFilter = [
+		'**/R.class',
+		'**/R$*.class',
+		'**/BuildConfig.*',
+		'**/Manifest*.*',
+		'**/*Test*.*',
+		'android/**/*.*',
+		'**/*DefaultImpls.*']  // Need to manually remove Kotlin generated classes from coverage
+
+def javaDebugTree = fileTree(dir: "${buildDir}/intermediates/javac/debug", excludes: fileFilter)
+def mainSrc = "${project.projectDir}/src/main/java"
+def execFiles = fileTree("${buildDir}").matching {
+	include "**/*.ec"
+	include "**/*.exec"
+}
+
+task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest', 'connectedAndroidTest']) {
+	reports {
+		xml.enabled = true
+		html.enabled = true
+		csv.enabled = true
+		html.destination file("${buildDir}/outputs/jacoco")
+	}
+
+	def classDir = new File("${buildDir}/intermediates/javac/debug/classes")
+	def sourceDir = new File("src/main/java")
+
+	FileTree exec = fileTree("${buildDir}").matching {
+		include "**/*.ec"
+		include "**/*.exec"
+	}
+
+
+	additionalClassDirs(classDir)
+	additionalSourceDirs(sourceDir)
+	executionData(exec)
+}
