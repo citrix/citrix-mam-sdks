@@ -14,9 +14,9 @@ CTXMAMNetwork is responsible for tunneling network communication via SecureBrows
         :type => "Custom"
     }
     s.source = { :http => 'https://raw.githubusercontent.com/citrix/citrix-mam-sdks/main/cocoapod/CTXMAMNetwork/21.9.0/CTXMAMNetwork.zip' }
-    s.source_files = 'CTXMAMNetwork/CTXMAMNetwork.framework/Headers/**/*.h'
-    s.public_header_files = 'CTXMAMNetwork/CTXMAMNetwork.framework/Headers/**/*.h'
-    s.vendored_frameworks = 'CTXMAMNetwork/CTXMAMNetwork.xcframework'
+    s.source_files = 'CTXMAMNetwork.xcframework/**/Headers/*.h'
+    s.public_header_files = 'CTXMAMNetwork.xcframework/**/Headers/*.h'
+    s.vendored_frameworks = 'CTXMAMNetwork.xcframework'
 
     s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
     s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }

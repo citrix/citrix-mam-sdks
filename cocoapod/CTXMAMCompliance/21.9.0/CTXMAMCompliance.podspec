@@ -15,9 +15,9 @@ CTXMAMCompliance is responsible for ensuring that the device is compliant with t
         :type => "Custom"
     }
     s.source = { :http => 'https://raw.githubusercontent.com/citrix/citrix-mam-sdks/main/cocoapod/CTXMAMCompliance/21.9.0/CTXMAMCompliance.zip' }
-    s.source_files = 'CTXMAMCompliance/CTXMAMCompliance.framework/Headers/**/*.h'
-    s.public_header_files = 'CTXMAMCompliance/CTXMAMCompliance.framework/Headers/**/*.h'
-    s.vendored_frameworks = 'CTXMAMCompliance/CTXMAMCompliance.xcframework'
+    s.source_files = 'CTXMAMCompliance.xcframework/**/Headers/*.h'
+    s.public_header_files = 'CTXMAMCompliance.xcframework/**/Headers/*.h'
+    s.vendored_frameworks = 'CTXMAMCompliance.xcframework'
 
     s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
     s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }

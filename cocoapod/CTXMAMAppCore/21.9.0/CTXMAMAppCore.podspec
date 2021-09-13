@@ -15,9 +15,9 @@ Pod::Spec.new do |s|
         :type => "Custom"
     }
     s.source = { :http => 'https://raw.githubusercontent.com/citrix/citrix-mam-sdks/main/cocoapod/CTXMAMAppCore/21.9.0/CTXMAMAppCore.zip' }
-    s.source_files = 'CTXMAMAppCore/CTXMAMAppCore.framework/Headers/**/*.h'
-    s.public_header_files = 'CTXMAMAppCore/CTXMAMAppCore.framework/Headers/**/*.h'
-    s.vendored_frameworks = 'CTXMAMAppCore/CTXMAMAppCore.xcframework'
+    s.source_files = 'CTXMAMAppCore.xcframework/**/Headers/*.h'
+    s.public_header_files = 'CTXMAMAppCore.xcframework/**/Headers/*.h'
+    s.vendored_frameworks = 'CTXMAMAppCore.xcframework'
 
     s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
     s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
