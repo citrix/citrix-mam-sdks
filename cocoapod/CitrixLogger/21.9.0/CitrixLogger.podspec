@@ -17,5 +17,5 @@ CitrixLogger framework is used for log creation, log collection, log packaging a
     s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
     s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
     s.source = { :http => 'https://raw.githubusercontent.com/citrix/citrix-mam-sdks/main/cocoapod/CitrixLogger/21.9.0/CitrixLogger.zip' }
-    s.vendored_frameworks = 'CitrixLogger/CitrixLogger.xcframework'
+    s.vendored_frameworks = 'CitrixLogger.xcframework'
 end

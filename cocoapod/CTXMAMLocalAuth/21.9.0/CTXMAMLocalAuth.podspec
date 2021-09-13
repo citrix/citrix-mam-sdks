@@ -14,9 +14,9 @@ CTXMAMLocalAuth is responsible for enforcing device passcode and max offline per
         :type => "Custom"
     }
     s.source = { :http => 'https://raw.githubusercontent.com/citrix/citrix-mam-sdks/main/cocoapod/CTXMAMLocalAuth/21.9.0/CTXMAMLocalAuth.zip' }
-    s.source_files = 'CTXMAMLocalAuth/CTXMAMLocalAuth.framework/Headers/**/*.h'
-    s.public_header_files = 'CTXMAMLocalAuth/CTXMAMLocalAuth.framework/Headers/**/*.h'
-    s.vendored_frameworks = 'CTXMAMLocalAuth/CTXMAMLocalAuth.xcframework'
+    s.source_files = 'CTXMAMLocalAuth.xcframework/**/Headers/*.h'
+    s.public_header_files = 'CTXMAMLocalAuth.xcframework/**/Headers/*.h'
+    s.vendored_frameworks = 'CTXMAMLocalAuth.xcframework'
 
     s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
     s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
