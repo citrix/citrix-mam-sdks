@@ -13,9 +13,9 @@ This pod provides the core functionality for the Citrix MAM SDK. See https://dev
         :text => "Custom"
     }
     s.source = { :http => 'https://raw.githubusercontent.com/citrix/citrix-mam-sdks/main/cocoapod/CTXMAMCore/21.9.0/CTXMAMCore.zip' }
-    s.source_files = 'CTXMAMCore/CTXMAMCore.framework/Headers/**/*.h'
-    s.public_header_files = 'CTXMAMCore/CTXMAMCore.framework/Headers/**/*.h'
-    s.vendored_frameworks = 'CTXMAMCore/CTXMAMCore.xcframework'
+    s.source_files = 'CTXMAMCore.xcframework/**/Headers/*.h'
+    s.public_header_files = 'CTXMAMCore.xcframework/**/Headers/*.h'
+    s.vendored_frameworks = 'CTXMAMCore.xcframework'
 
     s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
     s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }

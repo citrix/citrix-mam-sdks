@@ -14,9 +14,9 @@ CTXMAMContainment framework is responsible for controlling access to various dev
         :type => "Custom"
     }
     s.source = { :http => 'https://raw.githubusercontent.com/citrix/citrix-mam-sdks/main/cocoapod/CTXMAMContainment/21.9.0/CTXMAMContainment.zip' }
-    s.source_files = 'CTXMAMContainment/CTXMAMContainment.framework/Headers/**/*.h'
-    s.public_header_files = 'CTXMAMContainment/CTXMAMContainment.framework/Headers/**/*.h'
-    s.vendored_frameworks = 'CTXMAMContainment/CTXMAMContainment.xcframework'
+    s.source_files = 'CTXMAMContainment.xcframework/**/Headers/*.h'
+    s.public_header_files = 'CTXMAMContainment.xcframework/**/Headers/*.h'
+    s.vendored_frameworks = 'CTXMAMContainment.xcframework'
 
     s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
     s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
