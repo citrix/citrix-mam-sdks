@@ -1,0 +1,101 @@
+apply plugin: 'jacoco'
+
+def maven_url = 'https://raw.githubusercontent.com/citrix/citrix-mam-sdks/main/maven'
+def tools_url = 'https://github.com/citrix/citrix-mam-sdks/raw/main/tools/java/managed-app-utility.jar'
+
+def test_runner_version = '1.1.1'
+def mamsdk_version = '21.9.0.+'
+
+buildscript {
+	repositories {
+		google()
+		mavenCentral()
+	}
+	dependencies {
+		classpath 'com.android.tools.build:gradle:4.2.0'
+	}
+}
+
+repositories {
+	jcenter()
+	flatDir {
+		dirs 'src/main/libs'
+	}
+	maven {
+		url "${maven_url}"
+	}
+	mavenLocal()
+	mavenCentral()
+}
+
+dependencies {
+	compileOnly 'org.projectlombok:lombok:1.18.4'
+	annotationProcessor 'org.projectlombok:lombok:1.18.4'
+
+	implementation "com.citrix.android.sdk:mamsdk:$mamsdk_version"
+
+	androidTestImplementation "androidx.test:runner:$test_runner_version"
+	androidTestImplementation "androidx.test:core:$test_runner_version"
+	androidTestImplementation "androidx.test.ext:junit:$test_runner_version"
+	androidTestImplementation "androidx.test:rules:$test_runner_version"
+}
+
+ext.cdvMinSdkVersion = 24
+
+android {
+	ndkVersion '21.3.6528147'
+	testOptions.unitTests.includeAndroidResources = true
+	defaultConfig {
+		testApplicationId "com.citrix.mvpn.cordova.mvpntests"
+		testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+	}
+	packagingOptions {
+		exclude 'META-INF/NOTICE'
+		exclude 'META-INF/LICENSE'
+	}
+	buildTypes {
+		debug {
+			testCoverageEnabled true
+		}
+	}
+}
+
+task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest', 'connectedAndroidTest']) {
+	reports {
+		xml.enabled = true
+		html.enabled = true
+		csv.enabled = true
+		html.destination file("${buildDir}/outputs/jacoco")
+	}
+
+	def classDir = new File("${buildDir}/intermediates/javac/debug/classes")
+	def sourceDir = new File("src/main/java")
+
+	FileTree exec = fileTree("${buildDir}").matching {
+		include "**/*.ec"
+		include "**/*.exec"
+	}
+
+	additionalClassDirs(classDir)
+	additionalSourceDirs(sourceDir)
+	executionData(exec)
+}
+
+/*
+ * This task downloads managed-app-utility.jar which is the mdx wrapper utility file for android
+ */
+task getManagedAppUtilityJar() {
+	try {
+		project.mkdir("${projectDir}/src/main/mdx")
+	} catch (Exception InvalidUserDataException) {
+		// InvalidUserDataException is thrown if directory already exists
+		println "${projectDir}/src/main/mdx directory already exists. Skipping mkdir."
+	}
+
+	def filePath = new File("${projectDir}/src/main/mdx/managed-app-utility.jar")
+
+	if (!filePath.exists()) {
+		new URL("${tools_url}").withInputStream {
+			input -> filePath.withOutputStream { it << input }}
+	}
+}
