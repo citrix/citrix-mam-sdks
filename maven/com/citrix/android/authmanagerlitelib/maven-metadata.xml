@@ -3,13 +3,14 @@
   <groupId>com.citrix.android</groupId>
   <artifactId>authmanagerlitelib</artifactId>
   <versioning>
-    <latest>Release_21.9.0-2</latest>
-    <release>Release_21.9.0-2</release>
+    <latest>Release_22.1.0-1</latest>
+    <release>Release_22.1.0-1</release>
     <versions>
       <version>Release_21.5.0-1</version>
       <version>Release_21.7.5-1</version>
       <version>Release_21.9.0-2</version>
+      <version>Release_22.1.0-1</version>
     </versions>
-    <lastUpdated>20211005172317</lastUpdated>
+    <lastUpdated>20220119151803</lastUpdated>
   </versioning>
 </metadata>
