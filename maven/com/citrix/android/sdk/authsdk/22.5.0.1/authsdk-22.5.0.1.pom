@@ -24,7 +24,7 @@
     <dependency>
       <groupId>com.citrix.android</groupId>
       <artifactId>authmanagerlitelib</artifactId>
-      <version>Release_22.5.0-+</version>
+      <version>Release_22.1.0-+</version>
       <classifier>release</classifier>
       <type>aar</type>
     </dependency>
