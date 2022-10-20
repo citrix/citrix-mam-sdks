@@ -21,6 +21,8 @@ See the [Releases](https://github.com/citrix/citrix-mam-sdks/releases) for downl
 ### iOS
 The iOS SDK is also released in a Cocoapod-compatible manner, allowing customers to consume the iOS MAM SDKs in a way that works with the Cocoapod package manager.  The Pods are available from this site, and also posted to https://cocoapods.org/
 
+For more information about the ios MAM SDK APIs, see the [developer documentation](https://developer.cloud.com/citrixworkspace/mobile-application-integration/mam-sdk-for-ios-and-ipados/docs/overview).
+
 ### Android
 The Java Android MAM SDK is released in a Maven Repository-compatible manner.  This enables customers to consume the Android MAM SDKs in a way that works with the Gradle or Maven package manager. For example in Gradle's `build.gradle` file you would add the following:
 ```
@@ -40,12 +42,18 @@ dependencies {
 ```
 See the Android Java sample browser app for a complete example.
 
+For more information about the android MAM SDK APIs, see the [developer documentation](https://developer.cloud.com/citrixworkspace/mobile-application-integration/android-native/docs/overview).
+
 ### Cordova
 The Cordova MAM SDK is released as a Cordova plugin.  The plugins are available from this site, and also posted to https://www.npmjs.com/.
+
+For more information about the android cordova MAM SDK APIs, see the [developer documentation](https://developer.cloud.com/citrixworkspace/mobile-application-integration/cordova-android/docs/overview).
 
 ### Xamarin
 
 The Xamarin MAM SDK is released as a .nupkg file.  The packages are available from this site, and also posted to https://www.nuget.org/.
+
+For more information about the android xamarin MAM SDK APIs, see the [developer documentation](https://developer.cloud.com/citrixworkspace/mobile-application-integration/xamarin-android/docs/overview).
 
 ## Sample Apps
 
