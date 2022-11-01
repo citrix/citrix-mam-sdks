@@ -3,8 +3,8 @@
   <groupId>com.citrix.android.sdk</groupId>
   <artifactId>mamsdk</artifactId>
   <versioning>
-    <latest>22.9.0.5</latest>
-    <release>22.9.0.5</release>
+    <latest>22.9.0.7</latest>
+    <release>22.9.0.7</release>
     <versions>
       <version>20.10.5.1</version>
       <version>21.6.0.5</version>
@@ -14,7 +14,8 @@
       <version>22.2.0.2</version>
       <version>22.5.0.4</version>
       <version>22.9.0.5</version>
+	  <version>22.9.0.7</version>
     </versions>
-    <lastUpdated>20221020074427</lastUpdated>
+    <lastUpdated>20221101100254</lastUpdated>
   </versioning>
 </metadata>
