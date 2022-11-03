@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<metadata>
+<metadata modelVersion="1.1.0">
   <groupId>com.citrix.android</groupId>
   <artifactId>ctxbrowserlib</artifactId>
+  <version>Release_21.11.5-2</version>
   <versioning>
+    <latest>Release_21.11.5-2</latest>
     <release>Release_21.11.5-2</release>
     <versions>
+      <version>Release_21.11.5-1</version>
       <version>Release_21.11.5-2</version>
     </versions>
-    <lastUpdated>20221020074436</lastUpdated>
+    <lastUpdated>20211026112237</lastUpdated>
   </versioning>
 </metadata>

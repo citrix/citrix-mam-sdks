@@ -3,19 +3,11 @@
   <groupId>com.citrix.android.sdk</groupId>
   <artifactId>mvpnsdk</artifactId>
   <versioning>
-    <latest>22.9.0.4</latest>
-    <release>22.9.0.4</release>
+    <latest>DEV</latest>
+    <release>DEV</release>
     <versions>
-      <version>2.5.9</version>
-      <version>21.6.0.3</version>
-      <version>21.7.0.3</version>
-      <version>21.9.0.5</version>
-      <version>21.11.0.3</version>
-      <version>22.2.0.3</version>
-      <version>22.5.0.1</version>
-      <version>22.9.0.3</version>
-	  <version>22.9.0.4</version>
+      <version>DEV</version>
     </versions>
-    <lastUpdated>20221101100303</lastUpdated>
+    <lastUpdated>20221103030444</lastUpdated>
   </versioning>
 </metadata>

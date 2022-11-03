@@ -4,7 +4,7 @@
   <groupId>com.citrix.android</groupId>
   <artifactId>ctxbrowserlib</artifactId>
   <version>Release_21.11.5-2</version>
-  <packaging>aar</packaging>
+  <packaging>pom</packaging>
   <dependencies>
     <dependency>
       <groupId>org.jetbrains.kotlin</groupId>
