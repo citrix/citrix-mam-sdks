@@ -3,8 +3,8 @@
   <groupId>com.citrix.android.sdk</groupId>
   <artifactId>authsdk</artifactId>
   <versioning>
-    <latest>23.1.0.2</latest>
-    <release>23.1.0.2</release>
+    <latest>23.7.0.3</latest>
+    <release>23.7.0.3</release>
     <versions>
       <version>2.5.1</version>
       <version>21.6.0.2</version>
@@ -16,6 +16,7 @@
       <version>22.9.0.2</version>
 	  <version>22.11.0.2</version>
 	  <version>23.1.0.2</version>
+	  <version>23.7.0.3</version>
     </versions>
     <lastUpdated>20230106071702</lastUpdated>
   </versioning>
