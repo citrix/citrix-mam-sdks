@@ -1,0 +1,17 @@
+{
+  "name": "cordova-plugin-network",
+  "version": "23.8.0",
+  "description": "Cordova Plugin to support Citrix Micro VPN SDK. ",
+  "cordova": {
+    "id": "cordova-plugin-network",
+    "platforms": [
+      "ios"
+    ]
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-ios"
+  ],
+  "author": "Cloud Software Group, Inc.",
+  "license": "https://developer.cloud.com/citrix-api-terms-of-use"
+}
