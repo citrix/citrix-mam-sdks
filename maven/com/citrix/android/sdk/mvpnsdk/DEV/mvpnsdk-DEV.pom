@@ -7,9 +7,19 @@
   <packaging>aar</packaging>
   <dependencies>
     <dependency>
-      <groupId>org.apache.httpcomponents</groupId>
-      <artifactId>httpcore</artifactId>
-      <version>4.4.16</version>
+      <groupId>com.citrix.android</groupId>
+      <artifactId>authmanagerlitelib</artifactId>
+      <version>Release_22.9.0-1</version>
+    </dependency>
+    <dependency>
+      <groupId>com.citrix.android</groupId>
+      <artifactId>workspacehelperlib</artifactId>
+      <version>Release_20.12.0-2</version>
+    </dependency>
+    <dependency>
+      <groupId>com.citrix.android</groupId>
+      <artifactId>ctxandroidsdk</artifactId>
+      <version>Release_23.2.0-1</version>
     </dependency>
     <dependency>
       <groupId>com.linkedin.dexmaker</groupId>
