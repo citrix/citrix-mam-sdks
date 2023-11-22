@@ -1,0 +1,107 @@
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+	xmlns:android="http://schemas.android.com/apk/res/android" id="cordova-plugin-android-mvpn" version="0.0.1">
+	<name>CEMApp</name>
+	<description>Useful plugin for developing Cordova apps using Citrix Endpoint Management's MicroVPN</description>
+	<license>todo</license>
+	<keywords>citrix,cem,microvpn,micro,vpn</keywords>
+	<repo>todo</repo>
+	<issue>todo</issue>
+
+
+	<engines>
+		<engine name="cordova" version=">=3.0.0"/><!--iab plugin says "need cordova/urlutil" here. ignore until broken-->
+	</engines>
+
+	<!--js modules -->
+	<js-module src="www/mvpn-fetch.js" name="MvpnFetch">
+		<!--call mvpnfetch by saying in js "mvpnFetch"-->
+		<clobbers target="mvpnFetch"/>
+	</js-module>
+	<js-module src="www/ceminappbrowser.js" name="CEMInAppBrowser">
+		<!--call ceminappbrowser by saying in js "mvpn.InAppBrowser.open" or "cemwindow.open"-->
+		<clobbers target="mvpn.InAppBrowser.open"/>
+		<clobbers target="cemwindow.open"/>
+	</js-module>
+
+	<!--android-->
+	<platform name="android">
+		<!-- if the platform is added after the plugin is install -->
+		<hook type="after_platform_add" src="scripts/android/android_setup_mdx.js"/>
+
+		<!-- if the plugin is installed after the platform is added -->
+		<hook type="after_plugin_add" src="scripts/android/android_setup_mdx.js"/>
+
+		<hook type="before_compile" src="scripts/android/android_setup_mdx.js"/>
+		<!-- hook - this generates the mdx file for the user -->
+		<hook type="after_compile" src="scripts/android/android_generate_mdx.js"/>
+
+		<!--this stuff gets put into the app's config file-->
+		<config-file target="/res/xml/config.xml" parent="/*">
+			<!--need to override which webviewengine is used-->
+			<preference name="webview" value="com.citrix.mvpn.cordova.webview.CEMWebViewEngine"/>
+			<preference name="AndroidXEnabled" value="true" />
+			<preference name="loadUrlTimeoutValue" value="60000" />
+			<preference name="scheme" value="http" />
+			<!--declare fetch plugin-->
+			<feature name="MvpnFetch">
+				<param name="android-package" value="com.citrix.mvpn.cordova.fetch.MvpnFetch"/>
+			</feature>
+			<!--declare inappbrowser plugin-->
+			<feature name="CEMInAppBrowser">
+				<param name="android-package" value="com.citrix.mvpn.cordova.inappbrowser.CEMInAppBrowser"/>
+			</feature>
+		</config-file>
+		<config-file target="AndroidManifest.xml" parent="/manifest/application">
+			<uses-library
+				android:name="org.apache.http.legacy"
+				android:required="false" />
+		</config-file>
+
+		<!--use dependencies.gradle instead of declaring everything here-->
+		<framework src="src/android/dependencies.gradle" custom="true" type="gradleReference"/>
+
+		<!--WebViewOwnership stuff-->
+		<source-file src="src/android/com/citrix/mvpn/cordova/webviewowner/MvpnWebViewOwner.java" target-dir="src/com/citrix/mvpn/cordova/webviewowner/"/>
+		<source-file src="src/android/com/citrix/mvpn/cordova/webviewowner/MvpnWebViewOwnerImpl.java" target-dir="src/com/citrix/mvpn/cordova/webviewowner/"/>
+		<source-file src="src/android/com/citrix/mvpn/cordova/webviewowner/OwnedMvpnWebView.java" target-dir="src/com/citrix/mvpn/cordova/webviewowner/"/>
+
+		<!--used for all webview-based cem classes-->
+		<source-file src="src/android/com/citrix/mvpn/cordova/webviewrequests/LoadUrl.java" target-dir="src/com/citrix/mvpn/cordova/webviewrequests/"/>
+		<source-file src="src/android/com/citrix/mvpn/cordova/webviewrequests/PostUrl.java" target-dir="src/com/citrix/mvpn/cordova/webviewrequests/"/>
+		<source-file src="src/android/com/citrix/mvpn/cordova/webviewrequests/LoadData.java" target-dir="src/com/citrix/mvpn/cordova/webviewrequests/"/>
+		<source-file src="src/android/com/citrix/mvpn/cordova/webviewrequests/WebViewRequest.java" target-dir="src/com/citrix/mvpn/cordova/webviewrequests/"/>
+
+		<!--webview source-->
+		<source-file src="src/android/com/citrix/mvpn/cordova/webview/CEMWebView.java" target-dir="src/com/citrix/mvpn/cordova/webview/"/>
+		<source-file src="src/android/com/citrix/mvpn/cordova/webview/CEMWebViewEngine.java" target-dir="src/com/citrix/mvpn/cordova/webview/"/>
+
+		<!--inappbrowser source-->
+		<source-file src="src/android/com/citrix/mvpn/cordova/inappbrowser/ManagedWebView.java" target-dir="src/com/citrix/mvpn/cordova/inappbrowser/"/>
+		<source-file src="src/android/com/citrix/mvpn/cordova/inappbrowser/CEMInAppBrowser.java" target-dir="src/com/citrix/mvpn/cordova/inappbrowser/"/>
+		<source-file src="src/android/org/apache/cordova/inappbrowser/InAppBrowser.java" target-dir="src/org/apache/cordova/inappbrowser/"/>
+		<source-file src="src/android/org/apache/cordova/inappbrowser/InAppBrowserDialog.java" target-dir="src/org/apache/cordova/inappbrowser/"/>
+		<source-file src="src/android/org/apache/cordova/inappbrowser/InAppChromeClient.java" target-dir="src/org/apache/cordova/inappbrowser/"/>
+		<!--inappbrowser resources-->
+		<resource-file src="src/android/res/drawable-mdpi/ic_action_remove.png" target="res/drawable-mdpi/ic_action_remove.png"/>
+		<resource-file src="src/android/res/drawable-mdpi/ic_action_next_item.png" target="res/drawable-mdpi/ic_action_next_item.png"/>
+		<resource-file src="src/android/res/drawable-mdpi/ic_action_previous_item.png" target="res/drawable-mdpi/ic_action_previous_item.png"/>
+		<resource-file src="src/android/res/drawable-hdpi/ic_action_remove.png" target="res/drawable-hdpi/ic_action_remove.png"/>
+		<resource-file src="src/android/res/drawable-hdpi/ic_action_next_item.png" target="res/drawable-hdpi/ic_action_next_item.png"/>
+		<resource-file src="src/android/res/drawable-hdpi/ic_action_previous_item.png" target="res/drawable-hdpi/ic_action_previous_item.png"/>
+		<resource-file src="src/android/res/drawable-xhdpi/ic_action_remove.png" target="res/drawable-xhdpi/ic_action_remove.png"/>
+		<resource-file src="src/android/res/drawable-xhdpi/ic_action_next_item.png" target="res/drawable-xhdpi/ic_action_next_item.png"/>
+		<resource-file src="src/android/res/drawable-xhdpi/ic_action_previous_item.png" target="res/drawable-xhdpi/ic_action_previous_item.png"/>
+		<resource-file src="src/android/res/drawable-xxhdpi/ic_action_remove.png" target="res/drawable-xxhdpi/ic_action_remove.png"/>
+		<resource-file src="src/android/res/drawable-xxhdpi/ic_action_next_item.png" target="res/drawable-xxhdpi/ic_action_next_item.png"/>
+		<resource-file src="src/android/res/drawable-xxhdpi/ic_action_previous_item.png" target="res/drawable-xxhdpi/ic_action_previous_item.png"/>
+
+		<!--fetch source-->
+		<source-file src="src/android/com/citrix/mvpn/cordova/fetch/ApiException.java" target-dir="src/com/citrix/mvpn/cordova/fetch/"/>
+		<source-file src="src/android/com/citrix/mvpn/cordova/fetch/HttpHandler.java" target-dir="src/com/citrix/mvpn/cordova/fetch/"/>
+		<source-file src="src/android/com/citrix/mvpn/cordova/fetch/HttpHeaders.java" target-dir="src/com/citrix/mvpn/cordova/fetch/"/>
+		<source-file src="src/android/com/citrix/mvpn/cordova/fetch/HttpParams.java" target-dir="src/com/citrix/mvpn/cordova/fetch/"/>
+		<source-file src="src/android/com/citrix/mvpn/cordova/fetch/MvpnFetch.java" target-dir="src/com/citrix/mvpn/cordova/fetch/"/>
+		<source-file src="src/android/com/citrix/mvpn/cordova/fetch/MvpnFetchHelper.java" target-dir="src/com/citrix/mvpn/cordova/fetch/"/>
+		<source-file src="src/android/com/citrix/mvpn/cordova/fetch/OkHttpHandler.java" target-dir="src/com/citrix/mvpn/cordova/fetch/"/>
+	</platform>
+</plugin>
