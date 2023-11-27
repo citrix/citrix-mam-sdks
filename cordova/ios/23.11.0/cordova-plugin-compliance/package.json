@@ -1,0 +1,21 @@
+{
+  "name": "@citrix/cordova-plugin-compliance",
+  "version": "23.11.0",
+  "description": "Cordova Plugin for Citrix Compliance SDK",
+  "cordova": {
+    "id": "cordova-plugin-compliance",
+    "platforms": [
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/citrix/citrix-mam-sdks"
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-ios"
+  ],
+  "author": "Cloud Software Group, Inc.",
+  "license": "https://developer.cloud.com/citrix-api-terms-of-use"
+}
