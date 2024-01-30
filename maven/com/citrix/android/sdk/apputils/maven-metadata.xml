@@ -3,21 +3,10 @@
   <groupId>com.citrix.android.sdk</groupId>
   <artifactId>apputils</artifactId>
   <versioning>
-    <latest>23.12.0.4</latest>
-    <release>23.12.0.4</release>
+    <latest>BugFix_XMHELP-4500-SNAPSHOT</latest>
     <versions>
-      <version>21.6.0.2</version>
-      <version>21.7.0.3</version>
-      <version>21.9.0.3</version>
-      <version>21.11.0.1</version>
-      <version>22.2.0.1</version>
-      <version>22.5.0.1</version>
-      <version>22.9.0.1</version>
-	  <version>22.11.0.1</version>
-	  <version>23.1.0.1</version>
-	  <version>23.7.0.2</version>
-	  <version>23.12.0.4</version>
+      <version>BugFix_XMHELP-4500-SNAPSHOT</version>
     </versions>
-    <lastUpdated>20230630011454</lastUpdated>
+    <lastUpdated>20240129094623</lastUpdated>
   </versioning>
 </metadata>
