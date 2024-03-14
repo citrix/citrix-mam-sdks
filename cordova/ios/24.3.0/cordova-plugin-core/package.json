@@ -1,0 +1,21 @@
+{
+  "name": "@citrix/cordova-plugin-core",
+  "version": "24.3.0",
+  "description": "Cordova Plugin for Citrix CoreSDK. ",
+  "cordova": {
+    "id": "cordova-plugin-core",
+    "platforms": [
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/citrix/citrix-mam-sdks"
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-ios"
+  ],
+  "author": "Cloud Software Group, Inc.",
+  "license": "https://developer.cloud.com/citrix-api-terms-of-use"
+}
