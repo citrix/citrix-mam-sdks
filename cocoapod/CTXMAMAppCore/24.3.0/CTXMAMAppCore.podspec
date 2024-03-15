@@ -7,7 +7,8 @@ Pod::Spec.new do |s|
                        DESC
     s.homepage         = 'https://github.com/citrix/citrix-mam-sdks'
     s.author           = 'Cloud Software Group, Inc.'
-    s.module_name      = s.name s.platform         = :ios, "12.0"
+    s.module_name      = s.name
+    s.platform         = :ios, "12.0"
     s.requires_arc     = true
     s.license = {
         :text => "https://developer.cloud.com/citrix-api-terms-of-use",
