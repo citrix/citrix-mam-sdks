@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-localauth" version="1.0.0" xmlns="http://apache.org/cordova/ns/plugins/1.0">
+    <name>cordova-plugin-localauth</name>
+    <js-module name="CtxMAMLocalAuthBridge" src="www/CtxMAMLocalAuthBridge.js">
+        <clobbers target="cordova.plugins.citrix.localauth" />
+    </js-module>
+    <platform name="ios">
+        <config-file parent="/*" target="config.xml">
+            <feature name="CtxMAMLocalAuthBridge">
+                <param name="ios-package" value="CtxMAMLocalAuthBridge" />
+                <param name="onload" value="true"/>
+            </feature>
+        </config-file>
+        
+        <!--sdk dependencies-->
+        <framework src="src/ios/frameworks/CTXMAMLocalAuth.xcframework" custom="true" embed="true"/>
+
+        <!--Apple dependencies-->
+        <framework src="Foundation.framework"/>
+        <framework src="UIKit.framework"/>
+        <framework src="WebKit.framework"/>
+
+        <source-file src="src/ios/CtxMAMLocalAuthBridge.h" />
+        <source-file src="src/ios/CtxMAMLocalAuthBridge.m" />
+        <source-file src="src/ios/MAMLocalAuthSDK.h" />
+        <source-file src="src/ios/MAMLocalAuthSDK.m" />
+
+    </platform>
+</plugin>
