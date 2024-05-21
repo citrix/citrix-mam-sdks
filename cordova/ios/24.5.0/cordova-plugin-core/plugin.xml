@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-core" version="0.1.0" xmlns="http://apache.org/cordova/ns/plugins/1.0">
+	<name>MAMCoreSDKPlugin</name>
+	<description>Cordova Plugin for Integerating Apps with Citrix MAMCoreSDK</description>
+	<license>https://developer.cloud.com/citrix-api-terms-of-use</license>
+	<keywords>citrix,cem,core sdk,mam,mamcore</keywords>
+	<repo>git</repo>
+
+	<js-module name="CtxMAMCoreBridge" src="www/CtxMAMCoreBridge.js">
+		<clobbers target="cordova.plugins.citrix.core" />
+	</js-module>
+	<platform name="ios">
+        
+        <!-- if the platform is added after the plugin is installed -->
+        
+		<hook type="after_platform_add" src="scripts/ios/ios_setup_mdx.js"/>	
+        <hook type="after_platform_add" src="scripts/ios/ios_add_entitlements.js"/>
+		<hook type="after_platform_add" src="scripts/ios/ios_enable_keychain_sharing.js"/>
+		<hook type="after_platform_add" src="scripts/ios/ios_set_url_scheme.js"/>
+
+        <!-- if the plugin is installed after the platform is added -->
+		<hook type="after_plugin_add" src="scripts/ios/ios_setup_mdx.js"/>
+        <hook type="after_plugin_add" src="scripts/ios/ios_add_entitlements.js"/>
+		<hook type="after_plugin_add" src="scripts/ios/ios_enable_keychain_sharing.js"/>
+		<hook type="after_plugin_add" src="scripts/ios/ios_set_url_scheme.js"/>
+
+        <!-- hooks - these are run before compiling, to make sure everything is in check -->
+		<hook type="before_compile" src="scripts/ios/ios_setup_mdx.js"/>
+        <hook type="before_compile" src="scripts/ios/ios_add_entitlements.js"/>
+		<hook type="before_compile" src="scripts/ios/ios_enable_keychain_sharing.js"/>
+		<hook type="before_compile" src="scripts/ios/ios_set_url_scheme.js"/>
+
+		<!-- hook - this generates the mdx file for the user -->
+		<hook type="after_compile" src="scripts/ios/ios_generate_mdx.js"/>
+
+        
+		<config-file parent="/*" target="config.xml">
+			<feature name="CtxMAMCoreBridge">
+				<param name="ios-package" value="CtxMAMCoreBridge" />
+				<param name="onload" value="true"/>
+			</feature>
+		</config-file>
+
+		<!--sdk dependencies-->
+        <framework src="src/ios/frameworks/CTXMAMCore.xcframework" custom="true" embed="true" />
+        <framework src="src/ios/frameworks/CTXMAMAppCore.xcframework" custom="true" embed="true" />
+        <framework src="src/ios/frameworks/CitrixLogger.xcframework" custom="true" embed="true" />
+        
+        <!--Apple dependencies-->
+        <framework src="Foundation.framework" />
+        <framework src="UIKit.framework" />
+        <framework src="WebKit.framework" />
+
+		<!--Header and Sources files-->
+		<header-file src="src/ios/CtxMAMCoreBridge.h" />
+		<source-file src="src/ios/CtxMAMCoreBridge.m" />
+        <header-file src="src/ios/MAMCoreSDK.h" />
+		<source-file src="src/ios/MAMCoreSDK.m" />
+	</platform>
+</plugin>
