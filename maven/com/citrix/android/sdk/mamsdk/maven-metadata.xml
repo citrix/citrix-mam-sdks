@@ -3,8 +3,8 @@
   <groupId>com.citrix.android.sdk</groupId>
   <artifactId>mamsdk</artifactId>
   <versioning>
-    <latest>24.4.0.1</latest>
-    <release>24.4.0.1</release>
+    <latest>Feature_CXM-115386_target-API-34-SNAPSHOT-SNAPSHOT</latest>
+    <release>Feature_CXM-115386_target-API-34-SNAPSHOT-SNAPSHOT</release>
     <versions>
       <version>20.10.5.1</version>
       <version>21.6.0.5</version>
@@ -20,6 +20,7 @@
 	  <version>23.12.0.1</version>
 	  <version>24.3.0.2</version>
 	  <version>24.4.0.1</version>
+	  <version>Feature_CXM-115386_target-API-34-SNAPSHOT-SNAPSHOT</version>
     </versions>
     <lastUpdated>20240320052700</lastUpdated>
   </versioning>

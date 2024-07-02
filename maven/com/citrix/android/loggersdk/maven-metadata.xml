@@ -3,8 +3,9 @@
   <groupId>com.citrix.android</groupId>
   <artifactId>loggersdk</artifactId>
   <versioning>
-    <release>24.2.0.3</release>
+    <release>Feature_CXM-115413_API34-SNAPSHOT</release>
     <versions>
+    	<version>Feature_CXM-115413_API34-SNAPSHOT</version>
       <version>10.1.0</version>
 	  <version>24.2.0.3</version>
     </versions>

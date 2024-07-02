@@ -3,10 +3,11 @@
   <groupId>com.citrix.android.sdk</groupId>
   <artifactId>ccklib</artifactId>
   <versioning>
-    <latest>24.4.0.1</latest>
-    <release>24.4.0.1</release>
+    <latest>Feature_CXM-115386_target-API-34-SNAPSHOT</latest>
+    <release>Feature_CXM-115386_target-API-34-SNAPSHOT</release>
     <versions>
       <version>24.4.0.1</version>
+      <version>Feature_CXM-115386_target-API-34-SNAPSHOT</version>
     </versions>
     <lastUpdated>20240320052700</lastUpdated>
   </versioning>
