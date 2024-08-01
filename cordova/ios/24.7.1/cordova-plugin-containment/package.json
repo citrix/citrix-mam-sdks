@@ -1,0 +1,17 @@
+{
+  "name": "cordova-plugin-containment",
+  "version": "24.5.0",
+  "description": "Cordova plugin to support Containment SDK for iOS",
+  "cordova": {
+    "id": "cordova-plugin-containment",
+    "platforms": [
+      "ios"
+    ]
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-ios"
+  ],
+  "author": "Cloud Software Group, Inc.",
+  "license": "https://developer.cloud.com/citrix-api-terms-of-use"
+}
