@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.citrix.android.sdk</groupId>
+  <artifactId>analyticssdk</artifactId>
+  <version>24.7.0.3</version>
+  <packaging>aar</packaging>
+  <dependencies>
+    <dependency>
+      <groupId>com.citrix.android.sdk</groupId>
+      <artifactId>loggingsdk</artifactId>
+      <version>24.7.0.3</version>
+    </dependency>
+    <dependency>
+      <groupId>com.citrix.android.sdk</groupId>
+      <artifactId>apputils</artifactId>
+      <version>24.7.0.3</version>
+    </dependency>
+    <dependency>
+      <groupId>com.citrix.android.sdk</groupId>
+      <artifactId>googleanalyticssdk</artifactId>
+      <version>24.7.0.3</version>
+    </dependency>
+  </dependencies>
+</project>
