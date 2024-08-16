@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>com.citrix.android.sdk</groupId>
+  <artifactId>ccklib</artifactId>
+  <versioning>
+    <latest>BugFix_CXM-116534-SNAPSHOT</latest>
+    <versions>
+      <version>BugFix_CXM-116534-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20240815055957</lastUpdated>
+  </versioning>
+</metadata>

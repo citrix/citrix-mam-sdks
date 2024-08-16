@@ -3,11 +3,9 @@
   <groupId>com.citrix.android.sdk</groupId>
   <artifactId>authsdk</artifactId>
   <versioning>
-    <latest>DEV</latest>
-    <release>DEV</release>
     <versions>
-      <version>DEV</version>
+      <version>BugFix_CXM-116534-SNAPSHOT</version>
     </versions>
-    <lastUpdated>20230713074320</lastUpdated>
+    <lastUpdated>20240816004007</lastUpdated>
   </versioning>
 </metadata>

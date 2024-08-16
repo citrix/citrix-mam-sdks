@@ -3,11 +3,10 @@
   <groupId>com.citrix.android.sdk</groupId>
   <artifactId>googleanalyticssdk</artifactId>
   <versioning>
-    <latest>DEV</latest>
-    <release>DEV</release>
+    <latest>BugFix_CXM-116534-SNAPSHOT</latest>
     <versions>
-      <version>DEV</version>
+      <version>BugFix_CXM-116534-SNAPSHOT</version>
     </versions>
-    <lastUpdated>20230713061400</lastUpdated>
+    <lastUpdated>20240815060046</lastUpdated>
   </versioning>
 </metadata>
