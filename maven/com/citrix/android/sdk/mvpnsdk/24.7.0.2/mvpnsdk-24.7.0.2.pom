@@ -9,7 +9,7 @@
     <dependency>
       <groupId>com.linkedin.dexmaker</groupId>
       <artifactId>dexmaker</artifactId>
-      <version>2.19.1</version>
+      <version>2.28.3</version>
     </dependency>
   </dependencies>
 </project>
