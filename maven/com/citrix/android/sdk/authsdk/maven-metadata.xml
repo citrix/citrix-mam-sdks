@@ -4,8 +4,8 @@
   <artifactId>authsdk</artifactId>
   <versioning>
     <versions>
-      <version>BugFix_CXM-116534-SNAPSHOT</version>
+      <version>develop-SNAPSHOT</version>
     </versions>
-    <lastUpdated>20240816004007</lastUpdated>
+    <lastUpdated>20240923081905</lastUpdated>
   </versioning>
 </metadata>

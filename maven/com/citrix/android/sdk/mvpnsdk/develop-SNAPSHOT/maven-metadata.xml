@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <metadata modelVersion="1.1.0">
   <groupId>com.citrix.android.sdk</groupId>
-  <artifactId>mamsdk</artifactId>
-  <version>BugFix_github-SNAPSHOT</version>
+  <artifactId>mvpnsdk</artifactId>
+  <version>develop-SNAPSHOT</version>
   <versioning>
     <snapshot>
-      <timestamp>20240923.081851</timestamp>
+      <timestamp>20240923.081905</timestamp>
       <buildNumber>1</buildNumber>
     </snapshot>
-    <lastUpdated>20240923081851</lastUpdated>
+    <lastUpdated>20240923081905</lastUpdated>
     <snapshotVersions>
       <snapshotVersion>
         <extension>aar</extension>
-        <value>BugFix_github-20240923.081851-1</value>
-        <updated>20240923081851</updated>
+        <value>develop-20240923.081905-1</value>
+        <updated>20240923081905</updated>
       </snapshotVersion>
       <snapshotVersion>
         <extension>pom</extension>
-        <value>BugFix_github-20240923.081851-1</value>
-        <updated>20240923081851</updated>
+        <value>develop-20240923.081905-1</value>
+        <updated>20240923081905</updated>
       </snapshotVersion>
     </snapshotVersions>
   </versioning>

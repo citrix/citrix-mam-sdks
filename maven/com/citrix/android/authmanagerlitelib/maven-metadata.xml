@@ -3,10 +3,9 @@
   <groupId>com.citrix.android</groupId>
   <artifactId>authmanagerlitelib</artifactId>
   <versioning>
-    <release>Release_22.9.0-1</release>
     <versions>
-      <version>Release_22.9.0-1</version>
+      <version>BugFix_CXM-116534-SNAPSHOT</version>
     </versions>
-    <lastUpdated>20240816004007</lastUpdated>
+    <lastUpdated>20240923081905</lastUpdated>
   </versioning>
 </metadata>
