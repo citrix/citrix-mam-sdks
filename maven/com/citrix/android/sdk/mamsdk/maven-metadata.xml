@@ -4,8 +4,8 @@
   <artifactId>mamsdk</artifactId>
   <versioning>
     <versions>
-      <version>BugFix_github-SNAPSHOT</version>
+      <version>Feature_full-zip-for-edge-2-SNAPSHOT</version>
     </versions>
-    <lastUpdated>20240923081851</lastUpdated>
+    <lastUpdated>20241210075953</lastUpdated>
   </versioning>
 </metadata>
