@@ -3,12 +3,10 @@
   <groupId>com.citrix.android.sdk</groupId>
   <artifactId>ccklib</artifactId>
   <versioning>
-    <latest>24.7.0.3</latest>
-    <release>24.7.0.3</release>
+    <latest>develop-SNAPSHOT</latest>
     <versions>
-      <version>24.4.0.1</version>
-      <version>24.7.0.3</version>
+      <version>develop-SNAPSHOT</version>
     </versions>
-    <lastUpdated>20240320052700</lastUpdated>
+    <lastUpdated>20241219015641</lastUpdated>
   </versioning>
 </metadata>

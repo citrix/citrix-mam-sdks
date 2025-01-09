@@ -3,26 +3,9 @@
   <groupId>com.citrix.android.sdk</groupId>
   <artifactId>mamsdk</artifactId>
   <versioning>
-    <latest>24.9.0.1</latest>
-    <release>24.9.0.1</release>
     <versions>
-      <version>20.10.5.1</version>
-      <version>21.6.0.5</version>
-      <version>21.7.0.2</version>
-      <version>21.9.0.5</version>
-      <version>21.11.0.2</version>
-      <version>22.2.0.2</version>
-      <version>22.5.0.4</version>
-      <version>22.9.0.5</version>
-	  <version>22.11.0.1</version>
-	  <version>23.1.0.5</version>
-	  <version>23.7.0.2</version>
-	  <version>23.12.0.1</version>
-	  <version>24.3.0.2</version>
-	  <version>24.4.0.1</version>
-	  <version>24.7.0.1</version>
-	  <version>24.9.0.1</version>
+      <version>BugFix_XMHELP-4718-SNAPSHOT</version>
     </versions>
-    <lastUpdated>20240320052700</lastUpdated>
+    <lastUpdated>20250108080319</lastUpdated>
   </versioning>
 </metadata>
