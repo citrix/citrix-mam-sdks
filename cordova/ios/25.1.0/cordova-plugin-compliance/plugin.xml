@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-compliance" version="1.0.0" xmlns="http://apache.org/cordova/ns/plugins/1.0">
+    <name>ComplianceSdkPlugin</name>
+    <js-module name="CtxMAMComplianceBridge" src="www/CtxMAMComplianceBridge.js">
+        <clobbers target="cordova.plugins.citrix.compliance"/>
+    </js-module>
+    <platform name="ios">
+        <config-file parent="/*" target="config.xml">
+            <feature name="CtxMAMComplianceBridge">
+                <param name="ios-package" value="CtxMAMComplianceBridge"/>
+            </feature>
+        </config-file>
+
+        <!--sdk dependencies-->
+        <framework src="src/ios/frameworks/CTXMAMCompliance.xcframework" custom="true" embed="true"/>
+
+        <!--Apple dependencies-->
+        <framework src="Foundation.framework"/>
+        <framework src="UIKit.framework"/>
+        <framework src="WebKit.framework"/>
+
+        <!--Source Files-->
+        <header-file src="src/ios/CtxMAMComplianceBridge.h"/>
+        <source-file src="src/ios/CtxMAMComplianceBridge.m"/>
+        <header-file src="src/ios/ComplianceSDK.h"/>
+        <source-file src="src/ios/ComplianceSDK.m"/>
+    </platform>
+</plugin>
