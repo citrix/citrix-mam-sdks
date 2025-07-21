@@ -3,10 +3,11 @@
   <groupId>com.citrix.android</groupId>
   <artifactId>ctxbrowserlib</artifactId>
   <versioning>
+    <latest>Release_21.11.5-2</latest>
     <release>Release_21.11.5-2</release>
     <versions>
       <version>Release_21.11.5-2</version>
     </versions>
-    <lastUpdated>20221020074436</lastUpdated>
+    <lastUpdated>20250721015120</lastUpdated>
   </versioning>
 </metadata>
