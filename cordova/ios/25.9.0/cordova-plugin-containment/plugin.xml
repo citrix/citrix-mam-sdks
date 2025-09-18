@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-containment" version="1.0.0" xmlns="http://apache.org/cordova/ns/plugins/1.0">
+    <name>cordova-plugin-containment</name>
+    
+    <js-module name="CtxMAMContainmentBridge" src="www/CtxMAMContainmentBridge.js">
+        <clobbers target="cordova.plugins.citrix.containment" />
+    </js-module>
+    
+    <platform name="ios">
+        <config-file parent="/*" target="config.xml">
+            <feature name="CtxMAMContainmentBridge">
+                <param name="ios-package" value="CtxMAMContainmentBridge" />
+                <param name="onload" value="true"/>
+            </feature>
+        </config-file>
+        
+        
+        <!--sdk dependencies-->
+        <framework src="src/ios/frameworks/CTXMAMContainment.xcframework" custom="true" embed="true"/>
+
+        <!--Apple dependencies-->
+        <framework src="Foundation.framework"/>
+        <framework src="UIKit.framework"/>
+        <framework src="WebKit.framework"/>
+
+        <source-file src="src/ios/CtxMAMContainmentBridge.h" />
+        <source-file src="src/ios/CtxMAMContainmentBridge.m" />
+        <source-file src="src/ios/MAMContainmentSDK.h" />
+        <source-file src="src/ios/MAMContainmentSDK.m" />
+
+    </platform>
+</plugin>
