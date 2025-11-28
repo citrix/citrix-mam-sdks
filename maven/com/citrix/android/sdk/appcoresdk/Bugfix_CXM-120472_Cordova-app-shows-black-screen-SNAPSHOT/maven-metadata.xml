@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata modelVersion="1.1.0">
+  <groupId>com.citrix.android.sdk</groupId>
+  <artifactId>appcoresdk</artifactId>
+  <versioning>
+    <lastUpdated>20251127130352</lastUpdated>
+    <snapshot>
+      <timestamp>20251127.130352</timestamp>
+      <buildNumber>1</buildNumber>
+    </snapshot>
+    <snapshotVersions>
+      <snapshotVersion>
+        <extension>aar</extension>
+        <value>Bugfix_CXM-120472_Cordova-app-shows-black-screen-20251127.130352-1</value>
+        <updated>20251127130352</updated>
+      </snapshotVersion>
+      <snapshotVersion>
+        <extension>pom</extension>
+        <value>Bugfix_CXM-120472_Cordova-app-shows-black-screen-20251127.130352-1</value>
+        <updated>20251127130352</updated>
+      </snapshotVersion>
+    </snapshotVersions>
+  </versioning>
+  <version>Bugfix_CXM-120472_Cordova-app-shows-black-screen-SNAPSHOT</version>
+</metadata>
