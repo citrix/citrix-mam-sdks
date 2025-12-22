@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-network" version="0.1.0" xmlns="http://apache.org/cordova/ns/plugins/1.0">
+    <name>cordova-plugin-network</name>
+    <description>Cordova Plugin to support Citrix Micro VPN SDK</description>
+    <keywords>citrix,cem,mvpn,sdk,mvpnsdk</keywords>
+
+	<platform name="ios">
+		<config-file parent="/*" target="config.xml">
+		</config-file>
+
+		<!--sdk dependencies-->
+        <framework src="frameworks/CTXMAMNetwork.xcframework" custom="true" embed="true"/>
+	</platform>
+</plugin>
