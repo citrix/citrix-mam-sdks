@@ -1080,6 +1080,52 @@ Default value is On.
         </Policy>
         
         <Policy>
+            <PolicyName>DisableTranslate</PolicyName>
+            <PolicyType>boolean</PolicyType>
+            <PolicyCategory>Security_AppRestrictions</PolicyCategory>
+            <PolicyDefault>true</PolicyDefault>
+            <PolicyStrings>
+                <Title res_id="DISABLE_TRANSLATE_TITLE">Block Translate</Title>
+
+                <BooleanTrueLabel res_id="LABEL_ON">On</BooleanTrueLabel>
+
+                <BooleanFalseLabel res_id="LABEL_OFF">Off</BooleanFalseLabel>
+
+                <Description res_id="DISABLE_TRANSLATE_DESC">
+If On, prevents an app from using translate function.
+
+Default value is On.
+</Description>
+            </PolicyStrings>
+            <PolicyPriority>Normal</PolicyPriority>
+            <PolicyActiveFor>MDXMobileSDK</PolicyActiveFor>
+            <PolicyInactiveValue>false</PolicyInactiveValue>
+        </Policy>
+
+        <Policy>
+            <PolicyName>DisableSearchWeb</PolicyName>
+            <PolicyType>boolean</PolicyType>
+            <PolicyCategory>Security_AppRestrictions</PolicyCategory>
+            <PolicyDefault>true</PolicyDefault>
+            <PolicyStrings>
+                <Title res_id="DISABLE_SEARCHWEB_TITLE">Block Search Web</Title>
+
+                <BooleanTrueLabel res_id="LABEL_ON">On</BooleanTrueLabel>
+
+                <BooleanFalseLabel res_id="LABEL_OFF">Off</BooleanFalseLabel>
+
+                <Description res_id="DISABLE_SEARCHWEB_DESC">
+If On, prevents an app from using search web function.
+
+Default value is On.
+</Description>
+            </PolicyStrings>
+            <PolicyPriority>Normal</PolicyPriority>
+            <PolicyActiveFor>MDXMobileSDK</PolicyActiveFor>
+            <PolicyInactiveValue>false</PolicyInactiveValue>
+        </Policy>
+
+        <Policy>
             <PolicyName>GeofenceLongitude</PolicyName>
             <PolicyType>string</PolicyType>
             <PolicyCategory>Geofence</PolicyCategory>
