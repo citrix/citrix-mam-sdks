@@ -3,8 +3,8 @@
   <groupId>com.citrix.android.sdk</groupId>
   <artifactId>configsdk</artifactId>
   <versioning>
-    <latest>26.2.0.4</latest>
-    <release>26.2.0.4</release>
+    <latest>26.9.0.1</latest>
+    <release>26.9.0.1</release>
     <versions>
       <version>2.5.1</version>
       <version>21.6.0.2</version>
@@ -27,6 +27,7 @@
 	  <version>25.9.0.2</version>
 	  <version>25.11.0.1</version>
 	  <version>26.2.0.4</version>
+          <version>26.9.0.1</version>
     </versions>
     <lastUpdated>20240320052706</lastUpdated>
   </versioning>
